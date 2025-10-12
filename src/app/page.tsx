@@ -5,6 +5,7 @@ import { Ticket, Gem, Combine, Layers, ShoppingCart, Star, BookOpen } from "luci
 import AnimatedTicketCascade from "@/components/animated-ticket-cascade";
 import Image from "next/image";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
+import TrendingTickets from "@/components/trending-tickets";
 
 export default function Home() {
   const drawDate = new Date();
@@ -12,7 +13,7 @@ export default function Home() {
   const ticketImage = PlaceHolderImages.find(p => p.id === 'ticket-graffiti');
 
   return (
-    <div className="space-y-16">
+    <div className="space-y-24">
       <section className="relative grid md:grid-cols-2 items-center gap-8 md:gap-16 py-12 px-4 rounded-xl overflow-hidden bg-card border">
          <AnimatedTicketCascade />
          <div className="relative z-10 text-left">
@@ -40,6 +41,10 @@ export default function Home() {
             </div>
           )}
          </div>
+      </section>
+
+      <section>
+        <TrendingTickets />
       </section>
 
       <section className="grid md:grid-cols-2 gap-8">
