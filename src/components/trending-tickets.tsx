@@ -10,7 +10,6 @@ import {
   CarouselPrevious,
 } from '@/components/ui/carousel';
 import TrendingTicketItem from './trending-ticket-item';
-import Autoplay from "embla-carousel-autoplay"
 
 export default function TrendingTickets() {
   const trendingTickets = mockTickets.slice(0, 8); 
@@ -24,21 +23,15 @@ export default function TrendingTickets() {
             </p>
         </div>
       <Carousel
-        plugins={[
-            Autoplay({
-              delay: 3000,
-              stopOnInteraction: true,
-            }),
-          ]}
         opts={{
           align: 'start',
           loop: true,
         }}
         className="w-full"
       >
-        <CarouselContent className="-ml-8">
+        <CarouselContent className="-ml-4">
           {trendingTickets.map((ticket, index) => (
-            <CarouselItem key={index} className="pl-8 basis-auto">
+            <CarouselItem key={index} className="pl-4 basis-auto">
                 <TrendingTicketItem ticket={ticket} />
             </CarouselItem>
           ))}
