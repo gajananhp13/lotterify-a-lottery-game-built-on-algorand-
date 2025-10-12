@@ -36,9 +36,9 @@ export default function TrendingTickets() {
         }}
         className="w-full"
       >
-        <CarouselContent className="-ml-4">
+        <CarouselContent className="-ml-8">
           {trendingTickets.map((ticket, index) => (
-            <CarouselItem key={index} className="pl-4 basis-auto">
+            <CarouselItem key={index} className="pl-8 basis-auto">
                 <TrendingTicketItem ticket={ticket} />
             </CarouselItem>
           ))}
