@@ -3,55 +3,55 @@
     {
       "id": "ticket-1",
       "description": "Abstract swirling colors representing a lottery ticket NFT.",
-      "imageUrl": "https://picsum.photos/seed/lotto1/500/500",
+      "imageUrl": "https://placehold.co/500x500/29ABE2/FFFFFF/png?text=L",
       "imageHint": "abstract generative"
     },
     {
       "id": "ticket-2",
       "description": "Geometric patterns in blue and yellow for a lottery ticket NFT.",
-      "imageUrl": "https://picsum.photos/seed/lotto2/500/500",
+      "imageUrl": "https://placehold.co/500x500/FFDA63/000000/png?text=O",
       "imageHint": "geometric pattern"
     },
     {
       "id": "ticket-3",
       "description": "A vibrant, energetic light trail effect for a lottery ticket NFT.",
-      "imageUrl": "https://picsum.photos/seed/lotto3/500/500",
+      "imageUrl": "https://placehold.co/500x500/29ABE2/FFFFFF/png?text=T",
       "imageHint": "light trails"
     },
     {
       "id": "ticket-4",
       "description": "Crystalline structure design for a lottery ticket NFT.",
-      "imageUrl": "https://picsum.photos/seed/lotto4/500/500",
+      "imageUrl": "https://placehold.co/500x500/FFDA63/000000/png?text=T",
       "imageHint": "crystal abstract"
     },
     {
       "id": "ticket-5",
       "description": "A digital wave pattern in cool tones for a lottery ticket NFT.",
-      "imageUrl": "https://picsum.photos/seed/lotto5/500/500",
+      "imageUrl": "https://placehold.co/500x500/29ABE2/FFFFFF/png?text=E",
       "imageHint": "digital wave"
     },
     {
       "id": "ticket-6",
       "description": "Golden fractal design for a special lottery ticket NFT.",
-      "imageUrl": "https://picsum.photos/seed/lotto6/500/500",
+      "imageUrl": "https://placehold.co/500x500/FFDA63/000000/png?text=R",
       "imageHint": "gold fractal"
     },
     {
       "id": "ticket-7",
       "description": "A fluid, liquid metal texture for a lottery ticket NFT.",
-      "imageUrl": "https://picsum.photos/seed/lotto7/500/500",
+      "imageUrl": "https://placehold.co/500x500/29ABE2/FFFFFF/png?text=I",
       "imageHint": "liquid metal"
     },
     {
       "id": "ticket-8",
       "description": "A minimalist composition of shapes and colors for a lottery ticket NFT.",
-      "imageUrl": "https://picsum.photos/seed/lotto8/500/500",
+      "imageUrl": "https://placehold.co/500x500/FFDA63/000000/png?text=Y",
       "imageHint": "minimalist abstract"
     },
     {
       "id": "ticket-graffiti",
       "description": "A stylized lottery ticket with a graffiti art style.",
-      "imageUrl": "https://picsum.photos/seed/graffiti/600/800",
+      "imageUrl": "https://placehold.co/600x800/000000/FFFFFF/png?text=Ticket",
       "imageHint": "graffiti art"
     }
   ]
