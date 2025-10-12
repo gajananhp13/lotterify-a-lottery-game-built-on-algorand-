@@ -40,7 +40,7 @@ export function WalletProvider({ children }: { children: ReactNode }) {
       // Log the error for debugging, but don't let it crash the app
       console.error("Error during wallet disconnection:", error);
     } finally {
-      // Always reset the state
+      // Always reset the state, even if disconnect fails
       setAccounts([]);
       setActiveAccount(null);
     }
@@ -58,7 +58,7 @@ export function WalletProvider({ children }: { children: ReactNode }) {
           setActiveAccount(connectedAccounts[0]);
         }
       } catch (error) {
-        console.log("Could not reconnect session", error);
+        // Don't log the reconnect error to the console, it's noisy
       }
     };
     reconnect();
@@ -69,6 +69,7 @@ export function WalletProvider({ children }: { children: ReactNode }) {
         peraWallet.connector.off("disconnect", handleDisconnect);
       }
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   function handleConnect() {
