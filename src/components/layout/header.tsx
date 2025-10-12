@@ -1,9 +1,13 @@
+"use client";
+
 import Link from "next/link";
+import { usePathname } from 'next/navigation';
 import { Button } from "@/components/ui/button";
 import ConnectWallet from "@/components/connect-wallet";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Menu, Ticket, Store, Trophy } from "lucide-react";
 import { ThemeToggle } from "../theme-toggle";
+import { cn } from "@/lib/utils";
 
 const Logo = () => (
     <Link href="/" className="flex items-center gap-2" aria-label="Lotterify Home">
@@ -35,6 +39,8 @@ const navItems = [
 ];
 
 export default function Header() {
+    const pathname = usePathname();
+
     return (
         <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
             <div className="container flex h-16 items-center">
@@ -59,7 +65,12 @@ export default function Header() {
                                     <Link
                                         key={item.href}
                                         href={item.href}
-                                        className="flex items-center gap-2 text-lg font-medium text-muted-foreground hover:text-foreground"
+                                        className={cn(
+                                            "flex items-center gap-2 text-lg font-medium",
+                                            pathname === item.href
+                                                ? "text-foreground"
+                                                : "text-muted-foreground hover:text-foreground"
+                                        )}
                                     >
                                         {item.icon} {item.label}
                                     </Link>
@@ -70,15 +81,16 @@ export default function Header() {
                 </div>
 
                 <div className="flex flex-1 items-center justify-between space-x-2 md:justify-end">
-                    <nav className="hidden md:flex items-center space-x-6 text-sm font-medium">
+                    <nav className="hidden md:flex items-center space-x-2">
                         {navItems.map((item) => (
-                            <Link
-                                key={item.href}
-                                href={item.href}
-                                className="transition-colors hover:text-primary"
-                            >
-                                {item.label}
-                            </Link>
+                            <Button key={item.href} variant="ghost" asChild className={cn(
+                                "transition-colors",
+                                pathname === item.href ? "bg-muted text-foreground" : "hover:bg-muted/50"
+                            )}>
+                                <Link href={item.href}>
+                                    {item.label}
+                                </Link>
+                            </Button>
                         ))}
                     </nav>
                     <div className="flex items-center gap-2">
