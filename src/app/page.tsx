@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import CountdownTimer from "@/components/countdown-timer";
-import { Ticket, Gem, Users, ShoppingCart } from "lucide-react";
+import { Ticket, Gem, Users, ShoppingCart, Combine, Layers, BookOpen, Star } from "lucide-react";
 
 export default function Home() {
   const drawDate = new Date();
@@ -25,24 +25,6 @@ export default function Home() {
          </div>
       </section>
 
-      <section className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-          <div className="space-y-2">
-            <Gem className="mx-auto h-10 w-10 text-primary" />
-            <h3 className="text-2xl font-headline font-bold">NFT-Based Tickets</h3>
-            <p className="text-muted-foreground">Each ticket is a unique ARC-19 NFT, giving you true ownership on the Algorand blockchain.</p>
-          </div>
-          <div className="space-y-2">
-            <ShoppingCart className="mx-auto h-10 w-10 text-primary" />
-            <h3 className="text-2xl font-headline font-bold">Open Marketplace</h3>
-            <p className="text-muted-foreground">Trade your lottery tickets on a secondary market before the winner is drawn.</p>
-          </div>
-          <div className="space-y-2">
-            <Users className="mx-auto h-10 w-10 text-primary" />
-            <h3 className="text-2xl font-headline font-bold">Decentralized & Fair</h3>
-            <p className="text-muted-foreground">Winner selection is fully on-chain, transparent, and verifiably fair for everyone.</p>
-          </div>
-      </section>
-
       <section className="grid md:grid-cols-2 gap-8">
         <Card className="flex flex-col items-center justify-center text-center p-8 border-2 border-primary/20 bg-primary/5 hover:border-primary/50 transition-colors">
           <CardHeader>
@@ -63,6 +45,83 @@ export default function Home() {
             <CountdownTimer targetDate={drawDate} />
           </CardContent>
         </Card>
+      </section>
+
+      <section className="space-y-8">
+        <div className="text-center">
+            <h2 className="text-4xl md:text-5xl font-headline font-bold mb-2">Why Lotterify?</h2>
+            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+              Lotterify is more than just a lottery. It's a demonstration of the power and flexibility of the Algorand blockchain.
+            </p>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <Card>
+            <CardHeader className="flex flex-row items-center gap-4">
+              <div className="p-3 rounded-full bg-primary/10 text-primary border border-primary/20">
+                <Gem className="h-6 w-6" />
+              </div>
+              <CardTitle className="font-headline text-xl">NFTs with Utility</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="text-muted-foreground">Each ticket is a tradable NFT, showcasing Algorand Standard Assets (ASAs) with embedded utility beyond simple collectibles.</p>
+            </CardContent>
+          </Card>
+           <Card>
+            <CardHeader className="flex flex-row items-center gap-4">
+              <div className="p-3 rounded-full bg-primary/10 text-primary border border-primary/20">
+                <Combine className="h-6 w-6" />
+              </div>
+              <CardTitle className="font-headline text-xl">Composable Architecture</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="text-muted-foreground">Functionality is decomposed across modular smart contracts, providing a reusable and maintainable template for dApps.</p>
+            </CardContent>
+          </Card>
+           <Card>
+            <CardHeader className="flex flex-row items-center gap-4">
+              <div className="p-3 rounded-full bg-primary/10 text-primary border border-primary/20">
+                <Layers className="h-6 w-6" />
+              </div>
+              <CardTitle className="font-headline text-xl">Full End-to-End dApp</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="text-muted-foreground">Includes the full stack: PyTeal contracts, a Python backend, and a modern React frontend with wallet integration.</p>
+            </CardContent>
+          </Card>
+          <Card>
+            <CardHeader className="flex flex-row items-center gap-4">
+              <div className="p-3 rounded-full bg-primary/10 text-primary border border-primary/20">
+                <ShoppingCart className="h-6 w-6" />
+              </div>
+              <CardTitle className="font-headline text-xl">On-Chain Marketplace</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="text-muted-foreground">Trade tickets on a secondary market before the draw, all handled securely on-chain through escrow contracts.</p>
+            </CardContent>
+          </Card>
+          <Card>
+            <CardHeader className="flex flex-row items-center gap-4">
+              <div className="p-3 rounded-full bg-primary/10 text-primary border border-primary/20">
+                <Star className="h-6 w-6" />
+              </div>
+              <CardTitle className="font-headline text-xl">Advanced Features</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="text-muted-foreground">Demonstrates on-chain randomness, referral rewards, and secure prize pool management using atomic transfers.</p>
+            </CardContent>
+          </Card>
+          <Card>
+            <CardHeader className="flex flex-row items-center gap-4">
+              <div className="p-3 rounded-full bg-primary/10 text-primary border border-primary/20">
+                <BookOpen className="h-6 w-6" />
+              </div>
+              <CardTitle className="font-headline text-xl">Educational Value</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="text-muted-foreground">A well-documented, open-source repository that serves as a valuable tutorial and reference for Algorand developers.</p>
+            </CardContent>
+          </Card>
+        </div>
       </section>
     </div>
   );
