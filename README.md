@@ -1,4 +1,4 @@
-# Lotterify – Decentralized Lottery Game on Algorand
+# Lotterify  – Decentralized Lottery Game on Algorand
 
 ## Description
 Lotterify is a fully on-chain decentralized lottery where every ticket is a tradable NFT. Built on Algorand for speed, security, and transparency.
