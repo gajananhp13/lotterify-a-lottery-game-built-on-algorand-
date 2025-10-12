@@ -23,9 +23,7 @@ export default function ConnectWallet() {
   };
 
   const handleDisconnect = () => {
-    if (activeAccount) {
-      disconnect();
-    }
+    disconnect();
   };
 
   const truncateAddress = (address: string) =>
@@ -35,8 +33,8 @@ export default function ConnectWallet() {
     return (
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
-          <Button variant="outline" className="flex items-center gap-2">
-            <Avatar className="h-6 w-6">
+          <Button variant="outline" className="flex items-center gap-3">
+            <Avatar className="h-8 w-8">
               <AvatarFallback>
                 <User />
               </AvatarFallback>
@@ -49,9 +47,14 @@ export default function ConnectWallet() {
             </div>
           </Button>
         </DropdownMenuTrigger>
-        <DropdownMenuContent align="end">
-          <DropdownMenuLabel>
-            {truncateAddress(activeAccount.address)}
+        <DropdownMenuContent align="end" className="w-56">
+          <DropdownMenuLabel className="font-normal">
+            <div className="flex flex-col space-y-1">
+              <p className="text-sm font-medium leading-none">Wallet Connected</p>
+              <p className="text-xs leading-none text-muted-foreground">
+                {truncateAddress(activeAccount.address)}
+              </p>
+            </div>
           </DropdownMenuLabel>
           <DropdownMenuSeparator />
           <DropdownMenuItem onClick={handleDisconnect}>
