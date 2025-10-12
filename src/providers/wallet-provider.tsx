@@ -16,8 +16,9 @@ interface IWalletContext {
 
 export const WalletContext = createContext<IWalletContext | undefined>(undefined);
 
+// Initialize PeraWalletConnect without a chainId to let the client and wallet negotiate
 const peraWallet = new PeraWalletConnect({
-  chainId: 416002, // Algorand TestNet
+  shouldShowSignTxnToast: false,
 });
 
 const algodClient = new algosdk.Algodv2(
@@ -32,7 +33,9 @@ export function WalletProvider({ children }: { children: ReactNode }) {
   const [activeAccount, setActiveAccount] = useState<Account | null>(null);
 
   useEffect(() => {
+    // Reconnect session on component mount
     peraWallet.reconnectSession().then((accounts) => {
+      // Setup disconnect event listener
       peraWallet.connector?.on("disconnect", handleDisconnect);
 
       if (accounts.length) {
@@ -46,7 +49,9 @@ export function WalletProvider({ children }: { children: ReactNode }) {
     return peraWallet
       .connect()
       .then((newAccounts) => {
+        // Setup disconnect event listener
         peraWallet.connector?.on("disconnect", handleDisconnect);
+
         setAccounts(newAccounts);
         setActiveAccount(newAccounts[0]);
         return newAccounts;
