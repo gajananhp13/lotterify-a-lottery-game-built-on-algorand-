@@ -32,6 +32,15 @@ export function WalletProvider({ children }: { children: ReactNode }) {
   const [accounts, setAccounts] = useState<Account[]>([]);
   const [activeAccount, setActiveAccount] = useState<Account | null>(null);
 
+  const handleDisconnect = () => {
+    peraWallet.disconnect().catch(() => {
+      // In case of an error, reset the state
+    }).finally(() => {
+      setAccounts([]);
+      setActiveAccount(null);
+    });
+  };
+
   useEffect(() => {
     // Reconnect session on component mount
     peraWallet.reconnectSession().then((accounts) => {
@@ -56,12 +65,6 @@ export function WalletProvider({ children }: { children: ReactNode }) {
         setActiveAccount(newAccounts[0]);
         return newAccounts;
       })
-  }
-
-  function handleDisconnect() {
-    peraWallet.disconnect();
-    setAccounts([]);
-    setActiveAccount(null);
   }
 
   const walletContextValue: IWalletContext = {
