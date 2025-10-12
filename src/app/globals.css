@@ -66,3 +66,22 @@
     @apply bg-background text-foreground;
   }
 }
+
+@layer utilities {
+  .animated-ticket {
+    position: absolute;
+    top: -5%;
+    animation: fall linear infinite;
+  }
+
+  @keyframes fall {
+    0% {
+      transform: translateY(0) rotate(0deg);
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(105vh) rotate(360deg);
+      opacity: 0;
+    }
+  }
+}

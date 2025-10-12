@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import CountdownTimer from "@/components/countdown-timer";
 import { Ticket, Gem, Users, ShoppingCart, Combine, Layers, BookOpen, Star } from "lucide-react";
+import AnimatedTicketCascade from "@/components/animated-ticket-cascade";
 
 export default function Home() {
   const drawDate = new Date();
@@ -10,7 +11,7 @@ export default function Home() {
   return (
     <div className="space-y-16">
       <section className="relative text-center py-16 md:py-24 px-4 rounded-xl overflow-hidden bg-card border">
-         <div className="absolute inset-0 bg-grid-slate-900/[0.04] bg-[10px_10px] [mask-image:linear-gradient(0deg,transparent,black)] dark:bg-grid-slate-100/[0.03] dark:[mask-image:linear-gradient(0deg,transparent,white)]"></div>
+         <AnimatedTicketCascade />
          <div className="relative z-10">
             <h1 className="text-5xl md:text-7xl font-headline font-bold text-primary mb-4">
               The Fair Algorand Lottery
