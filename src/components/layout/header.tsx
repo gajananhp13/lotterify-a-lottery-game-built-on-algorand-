@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import ConnectWallet from "@/components/connect-wallet";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Menu, Ticket, Store, Trophy } from "lucide-react";
+import { ThemeToggle } from "../theme-toggle";
 
 const Logo = () => (
     <Link href="/" className="flex items-center gap-2" aria-label="Lotterify Home">
@@ -80,8 +81,9 @@ export default function Header() {
                             </Link>
                         ))}
                     </nav>
-                    <div className="flex items-center">
+                    <div className="flex items-center gap-2">
                         <ConnectWallet />
+                        <ThemeToggle />
                     </div>
                 </div>
             </div>

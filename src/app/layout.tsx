@@ -5,6 +5,7 @@ import Header from '@/components/layout/header';
 import Footer from '@/components/layout/footer';
 import { Toaster } from '@/components/ui/toaster';
 import { WalletProvider } from '@/providers/wallet-provider';
+import { ThemeProvider } from '@/providers/theme-provider';
 
 export const metadata: Metadata = {
   title: 'Lotterify - Decentralized Lottery on Algorand',
@@ -28,12 +29,19 @@ export default function RootLayout({
           'min-h-screen bg-background font-body antialiased flex flex-col',
         )}
       >
-        <WalletProvider>
-          <Header />
-          <main className="flex-grow container mx-auto px-4 py-8">{children}</main>
-          <Footer />
-          <Toaster />
-        </WalletProvider>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <WalletProvider>
+            <Header />
+            <main className="flex-grow container mx-auto px-4 py-8">{children}</main>
+            <Footer />
+            <Toaster />
+          </WalletProvider>
+        </ThemeProvider>
       </body>
     </html>
   );
