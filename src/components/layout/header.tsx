@@ -14,19 +14,21 @@ const Logo = () => (
         <svg
             width="32"
             height="32"
-            viewBox="0 0 100 100"
+            viewBox="0 0 24 24"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
             className="text-primary"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
         >
-            <path
-                d="M50 2.5C23.7625 2.5 2.5 23.7625 2.5 50C2.5 76.2375 23.7625 97.5 50 97.5C76.2375 97.5 97.5 76.2375 97.5 50C97.5 23.7625 76.2375 2.5 50 2.5ZM50 87.5C29.2875 87.5 12.5 70.7125 12.5 50C12.5 29.2875 29.2875 12.5 50 12.5C70.7125 12.5 87.5 29.2875 87.5 50C87.5 70.7125 70.7125 87.5 50 87.5Z"
-                fill="currentColor"
-            />
-            <path
-                d="M62.5 43.75H37.5C34.1125 43.75 31.25 46.6125 31.25 50C31.25 53.3875 34.1125 56.25 37.5 56.25H62.5C65.8875 56.25 68.75 53.3875 68.75 50C68.75 46.6125 65.8875 43.75 62.5 43.75Z"
-                fill="currentColor"
-            />
+            <path d="M4 9h16" />
+            <path d="M4 15h16" />
+            <path d="M9.5 9v6" />
+            <path d="M14.5 9v6" />
+            <path d="M2 12a2 2 0 0 0 2-2V6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v4a2 2 0 0 0 2 2" />
+            <path d="M2 12a2 2 0 0 1 2 2v4a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-4a2 2 0 0 1 2-2" />
         </svg>
         <span className="text-2xl font-headline font-bold">Lotterify</span>
     </Link>
