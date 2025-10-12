@@ -11,10 +11,10 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { LogIn, LogOut, User } from "lucide-react";
-import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
+import { Avatar, AvatarFallback } from "./ui/avatar";
 
 export default function ConnectWallet() {
-  const { accounts, activeAccount, connect, disconnect } = useWallet();
+  const { activeAccount, connect, disconnect } = useWallet();
 
   const handleConnect = () => {
     connect().catch((error) => {
@@ -41,9 +41,12 @@ export default function ConnectWallet() {
                 <User />
               </AvatarFallback>
             </Avatar>
-            <span className="font-mono text-sm">
-              {truncateAddress(activeAccount.address)}
-            </span>
+            <div className="flex flex-col items-start text-left">
+              <span className="text-sm font-medium leading-none">{activeAccount.name}</span>
+              <span className="font-mono text-xs text-muted-foreground">
+                {truncateAddress(activeAccount.address)}
+              </span>
+            </div>
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent align="end">
