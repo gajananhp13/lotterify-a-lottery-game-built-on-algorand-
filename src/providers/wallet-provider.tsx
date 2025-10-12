@@ -1,3 +1,4 @@
+
 "use client";
 
 import { PeraWalletConnect } from "@perawallet/connect";
@@ -16,7 +17,7 @@ interface IWalletContext {
 
 export const WalletContext = createContext<IWalletContext | undefined>(undefined);
 
-// Initialize PeraWalletConnect without a chainId to let the client and wallet negotiate
+// Initialize PeraWalletConnect and let the wallet negotiate the chainId
 const peraWallet = new PeraWalletConnect({
   shouldShowSignTxnToast: false,
 });
@@ -33,33 +34,50 @@ export function WalletProvider({ children }: { children: ReactNode }) {
   const [activeAccount, setActiveAccount] = useState<Account | null>(null);
 
   const handleDisconnect = () => {
-    peraWallet.disconnect().catch(() => {
-      // In case of an error, reset the state
-    }).finally(() => {
+    try {
+      peraWallet.disconnect();
+    } catch (error) {
+      // Log the error for debugging, but don't let it crash the app
+      console.error("Error during wallet disconnection:", error);
+    } finally {
+      // Always reset the state
       setAccounts([]);
       setActiveAccount(null);
-    });
+    }
   };
 
   useEffect(() => {
-    // Reconnect session on component mount
-    peraWallet.reconnectSession().then((accounts) => {
-      // Setup disconnect event listener
-      peraWallet.connector?.on("disconnect", handleDisconnect);
-
-      if (accounts.length) {
-        setAccounts(accounts);
-        setActiveAccount(accounts[0]);
+    const reconnect = async () => {
+      try {
+        const connectedAccounts = await peraWallet.reconnectSession();
+        if (peraWallet.connector) {
+          peraWallet.connector.on("disconnect", handleDisconnect);
+        }
+        if (connectedAccounts.length) {
+          setAccounts(connectedAccounts);
+          setActiveAccount(connectedAccounts[0]);
+        }
+      } catch (error) {
+        console.log("Could not reconnect session", error);
       }
-    });
+    };
+    reconnect();
+
+    // Cleanup listener on component unmount
+    return () => {
+      if (peraWallet.connector) {
+        peraWallet.connector.off("disconnect", handleDisconnect);
+      }
+    }
   }, []);
 
   function handleConnect() {
     return peraWallet
       .connect()
       .then((newAccounts) => {
-        // Setup disconnect event listener
-        peraWallet.connector?.on("disconnect", handleDisconnect);
+        if (peraWallet.connector) {
+          peraWallet.connector.on("disconnect", handleDisconnect);
+        }
 
         setAccounts(newAccounts);
         setActiveAccount(newAccounts[0]);
