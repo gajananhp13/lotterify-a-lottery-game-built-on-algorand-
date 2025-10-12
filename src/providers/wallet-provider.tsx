@@ -5,6 +5,7 @@ import { PeraWalletConnect } from "@perawallet/connect";
 import type { Account } from "@perawallet/connect/dist/util/model/peraWalletModels";
 import { createContext, useState, useEffect, ReactNode } from "react";
 import algosdk from "algosdk";
+import { useToast } from "@/hooks/use-toast";
 
 interface IWalletContext {
   accounts: Account[];
@@ -32,6 +33,7 @@ const algodClient = new algosdk.Algodv2(
 export function WalletProvider({ children }: { children: ReactNode }) {
   const [accounts, setAccounts] = useState<Account[]>([]);
   const [activeAccount, setActiveAccount] = useState<Account | null>(null);
+  const { toast } = useToast();
 
   const handleDisconnect = () => {
     try {
@@ -81,7 +83,14 @@ export function WalletProvider({ children }: { children: ReactNode }) {
         }
 
         setAccounts(newAccounts);
-        setActiveAccount(newAccounts[0]);
+        const newActiveAccount = newAccounts[0];
+        setActiveAccount(newActiveAccount);
+
+        toast({
+          title: "Wallet Connected!",
+          description: `Welcome, ${newActiveAccount.name}.`,
+        });
+
         return newAccounts;
       })
   }
