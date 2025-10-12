@@ -47,6 +47,12 @@
       "description": "A minimalist composition of shapes and colors for a lottery ticket NFT.",
       "imageUrl": "https://picsum.photos/seed/lotto8/500/500",
       "imageHint": "minimalist abstract"
+    },
+    {
+      "id": "ticket-graffiti",
+      "description": "A stylized lottery ticket with a graffiti art style.",
+      "imageUrl": "https://picsum.photos/seed/graffiti/600/800",
+      "imageHint": "graffiti art"
     }
   ]
 }

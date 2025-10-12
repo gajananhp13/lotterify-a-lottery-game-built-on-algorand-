@@ -1,28 +1,44 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import CountdownTimer from "@/components/countdown-timer";
-import { Ticket, Gem, Users, ShoppingCart, Combine, Layers, BookOpen, Star } from "lucide-react";
+import { Ticket, Gem, Combine, Layers, ShoppingCart, Star, BookOpen } from "lucide-react";
 import AnimatedTicketCascade from "@/components/animated-ticket-cascade";
+import Image from "next/image";
+import { PlaceHolderImages } from "@/lib/placeholder-images";
 
 export default function Home() {
   const drawDate = new Date();
   drawDate.setDate(drawDate.getDate() + 3); // Draw in 3 days
+  const ticketImage = PlaceHolderImages.find(p => p.id === 'ticket-graffiti');
 
   return (
     <div className="space-y-16">
-      <section className="relative text-center py-16 md:py-24 px-4 rounded-xl overflow-hidden bg-card border">
+      <section className="relative grid md:grid-cols-2 items-center gap-8 md:gap-16 py-12 px-4 rounded-xl overflow-hidden bg-card border">
          <AnimatedTicketCascade />
-         <div className="relative z-10">
+         <div className="relative z-10 text-left">
             <h1 className="text-5xl md:text-7xl font-headline font-bold text-primary mb-4">
               The Fair Algorand Lottery
             </h1>
-            <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto mb-8">
+            <p className="text-lg md:text-xl text-muted-foreground max-w-xl mb-8">
               Buy your NFT ticket, trade it on the marketplace, and win big. Transparent, secure, and decentralized.
             </p>
             <Button size="lg" className="bg-accent text-accent-foreground hover:bg-accent/90 text-lg px-8 py-6 shadow-lg hover:shadow-xl transition-shadow duration-300">
               <Ticket className="mr-2 h-6 w-6" />
               Buy a Ticket Now
             </Button>
+         </div>
+         <div className="relative z-10 hidden md:flex justify-center items-center">
+          {ticketImage && (
+            <div className="aspect-[3/4] relative w-full max-w-sm transform transition-transform duration-500 hover:rotate-3 hover:scale-105">
+                <Image
+                    src={ticketImage.imageUrl}
+                    alt={ticketImage.description}
+                    data-ai-hint={ticketImage.imageHint}
+                    fill
+                    className="object-cover rounded-xl shadow-2xl"
+                />
+            </div>
+          )}
          </div>
       </section>
 
