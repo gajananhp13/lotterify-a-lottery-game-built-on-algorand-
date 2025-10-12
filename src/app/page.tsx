@@ -1,16 +1,11 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import CountdownTimer from "@/components/countdown-timer";
-import TicketCard from "@/components/ticket-card";
-import { mockTickets } from "@/lib/mock-data";
-import { ArrowRight, Ticket, Gem, Users, ShoppingCart } from "lucide-react";
-import Link from "next/link";
+import { Ticket, Gem, Users, ShoppingCart } from "lucide-react";
 
 export default function Home() {
   const drawDate = new Date();
   drawDate.setDate(drawDate.getDate() + 3); // Draw in 3 days
-
-  const featuredTickets = mockTickets.filter(t => t.status === 'listed').slice(0, 4);
 
   return (
     <div className="space-y-16">
@@ -68,22 +63,6 @@ export default function Home() {
             <CountdownTimer targetDate={drawDate} />
           </CardContent>
         </Card>
-      </section>
-      
-      <section>
-        <div className="flex justify-between items-center mb-6">
-          <h2 className="text-4xl font-headline font-bold">Marketplace Spotlight</h2>
-          <Button variant="link" asChild>
-            <Link href="/marketplace">
-              View All <ArrowRight className="ml-2 h-4 w-4" />
-            </Link>
-          </Button>
-        </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {featuredTickets.map(ticket => (
-            <TicketCard key={ticket.id} ticket={ticket} />
-          ))}
-        </div>
       </section>
     </div>
   );
