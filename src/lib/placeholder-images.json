@@ -50,9 +50,9 @@
     },
     {
       "id": "ticket-graffiti",
-      "description": "A stylized lottery ticket with a graffiti art style.",
-      "imageUrl": "https://placehold.co/600x800/000000/FFFFFF/png?text=Ticket",
-      "imageHint": "graffiti art"
+      "description": "A vibrant, 3D graffiti-style artwork with 'WIN BIG!' text, golden coins, and lottery balls on a dark brick wall.",
+      "imageUrl": "https://placehold.co/600x800/1a1a1a/FFFFFF/png?text=WIN+BIG!",
+      "imageHint": "graffiti art WIN BIG"
     }
   ]
 }
