@@ -1,3 +1,52 @@
 {
-  "placeholderImages": []
+  "placeholderImages": [
+    {
+      "id": "ticket-1",
+      "description": "Abstract swirling colors representing a lottery ticket NFT.",
+      "imageUrl": "https://picsum.photos/seed/lotto1/500/500",
+      "imageHint": "abstract generative"
+    },
+    {
+      "id": "ticket-2",
+      "description": "Geometric patterns in blue and yellow for a lottery ticket NFT.",
+      "imageUrl": "https://picsum.photos/seed/lotto2/500/500",
+      "imageHint": "geometric pattern"
+    },
+    {
+      "id": "ticket-3",
+      "description": "A vibrant, energetic light trail effect for a lottery ticket NFT.",
+      "imageUrl": "https://picsum.photos/seed/lotto3/500/500",
+      "imageHint": "light trails"
+    },
+    {
+      "id": "ticket-4",
+      "description": "Crystalline structure design for a lottery ticket NFT.",
+      "imageUrl": "https://picsum.photos/seed/lotto4/500/500",
+      "imageHint": "crystal abstract"
+    },
+    {
+      "id": "ticket-5",
+      "description": "A digital wave pattern in cool tones for a lottery ticket NFT.",
+      "imageUrl": "https://picsum.photos/seed/lotto5/500/500",
+      "imageHint": "digital wave"
+    },
+    {
+      "id": "ticket-6",
+      "description": "Golden fractal design for a special lottery ticket NFT.",
+      "imageUrl": "https://picsum.photos/seed/lotto6/500/500",
+      "imageHint": "gold fractal"
+    },
+    {
+      "id": "ticket-7",
+      "description": "A fluid, liquid metal texture for a lottery ticket NFT.",
+      "imageUrl": "https://picsum.photos/seed/lotto7/500/500",
+      "imageHint": "liquid metal"
+    },
+    {
+      "id": "ticket-8",
+      "description": "A minimalist composition of shapes and colors for a lottery ticket NFT.",
+      "imageUrl": "https://picsum.photos/seed/lotto8/500/500",
+      "imageHint": "minimalist abstract"
+    }
+  ]
 }
