@@ -1,3 +1,6 @@
+"use client"
+
+import * as React from "react"
 import { mockTickets } from '@/lib/mock-data';
 import {
   Carousel,
@@ -7,9 +10,10 @@ import {
   CarouselPrevious,
 } from '@/components/ui/carousel';
 import TrendingTicketItem from './trending-ticket-item';
+import Autoplay from "embla-carousel-autoplay"
 
 export default function TrendingTickets() {
-  const trendingTickets = mockTickets.slice(0, 8); // Show up to 8 tickets
+  const trendingTickets = mockTickets.slice(0, 8); 
 
   return (
     <div className="w-full space-y-8">
@@ -20,15 +24,21 @@ export default function TrendingTickets() {
             </p>
         </div>
       <Carousel
+        plugins={[
+            Autoplay({
+              delay: 3000,
+              stopOnInteraction: true,
+            }),
+          ]}
         opts={{
           align: 'start',
           loop: true,
         }}
         className="w-full"
       >
-        <CarouselContent className="-ml-1">
+        <CarouselContent className="-ml-4">
           {trendingTickets.map((ticket, index) => (
-            <CarouselItem key={index} className="pl-6 basis-full md:basis-1/2 lg:basis-1/3 xl:basis-1/4">
+            <CarouselItem key={index} className="pl-4 basis-auto">
                 <TrendingTicketItem ticket={ticket} />
             </CarouselItem>
           ))}
