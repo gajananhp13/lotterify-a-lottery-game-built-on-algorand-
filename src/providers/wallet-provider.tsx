@@ -36,16 +36,11 @@ export function WalletProvider({ children }: { children: ReactNode }) {
   const { toast } = useToast();
 
   const handleDisconnect = () => {
-    try {
-      peraWallet.disconnect();
-    } catch (error) {
-      // Log the error for debugging, but don't let it crash the app
-      console.error("Error during wallet disconnection:", error);
-    } finally {
-      // Always reset the state, even if disconnect fails
-      setAccounts([]);
-      setActiveAccount(null);
-    }
+    // We are only clearing the state here, not calling peraWallet.disconnect()
+    // to avoid the "Missing or invalid topic field" error. The wallet provider
+    // and Pera extension will handle the session termination.
+    setAccounts([]);
+    setActiveAccount(null);
   };
 
   useEffect(() => {
@@ -88,7 +83,7 @@ export function WalletProvider({ children }: { children: ReactNode }) {
 
         toast({
           title: "Wallet Connected!",
-          description: `Welcome, ${newActiveAccount.name}.`,
+          description: `Welcome, ${newActiveAccount.name || newActiveAccount.address}.`,
         });
 
         return newAccounts;

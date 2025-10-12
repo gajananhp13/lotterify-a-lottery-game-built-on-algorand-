@@ -17,7 +17,7 @@ export default function ConnectWallet() {
     disconnect();
   };
 
-  if (activeAccount && activeAccount.address) {
+  if (activeAccount) {
     return (
       <Button variant="outline" onClick={handleDisconnect}>
         <LogOut className="mr-2 h-4 w-4" />
