@@ -29,9 +29,9 @@ export default function ConnectWallet() {
   };
 
   const truncateAddress = (address: string) =>
-    `${address.slice(0, 6)}...${address.slice(-4)}`;
+    address ? `${address.slice(0, 6)}...${address.slice(-4)}` : "";
 
-  if (activeAccount) {
+  if (activeAccount && activeAccount.address) {
     return (
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
