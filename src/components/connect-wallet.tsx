@@ -3,12 +3,17 @@
 import { useWallet } from "@/hooks/use-wallet";
 import { Button } from "@/components/ui/button";
 import { LogIn, LogOut } from "lucide-react";
+import { PeraWalletConnectError } from "@perawallet/connect";
 
 export default function ConnectWallet() {
   const { activeAccount, connect, disconnect } = useWallet();
 
   const handleConnect = () => {
     connect().catch((error) => {
+      // The user closing the connection modal is a normal UX flow, so we don't need to log it as an error.
+      if (error instanceof PeraWalletConnectError && error.message.includes("Connect modal is closed by user")) {
+        return;
+      }
       console.error("Failed to connect wallet:", error);
     });
   };
