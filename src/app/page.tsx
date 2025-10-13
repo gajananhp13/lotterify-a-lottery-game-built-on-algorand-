@@ -3,14 +3,12 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import CountdownTimer from "@/components/countdown-timer";
 import { Ticket, Gem, Combine, Layers, ShoppingCart, Star, BookOpen } from "lucide-react";
 import AnimatedTicketCascade from "@/components/animated-ticket-cascade";
-import Image from "next/image";
-import { PlaceHolderImages } from "@/lib/placeholder-images";
 import TrendingTickets from "@/components/trending-tickets";
+import Ticket3D from "@/components/ticket-3d";
 
 export default function Home() {
   const drawDate = new Date();
   drawDate.setDate(drawDate.getDate() + 3); // Draw in 3 days
-  const ticketImage = PlaceHolderImages.find(p => p.id === 'ticket-graffiti');
 
   return (
     <div className="space-y-24">
@@ -29,17 +27,7 @@ export default function Home() {
             </Button>
          </div>
          <div className="relative z-10 hidden md:flex justify-center items-center">
-          {ticketImage && (
-            <div className="aspect-[3/4] relative w-full max-w-sm transform transition-transform duration-500 hover:rotate-3 hover:scale-105">
-                <Image
-                    src={ticketImage.imageUrl}
-                    alt={ticketImage.description}
-                    data-ai-hint={ticketImage.imageHint}
-                    fill
-                    className="object-cover rounded-xl shadow-2xl"
-                />
-            </div>
-          )}
+            <Ticket3D />
          </div>
       </section>
 
