@@ -1,10 +1,12 @@
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import CountdownTimer from "@/components/countdown-timer";
-import { Ticket, Gem, Combine, Layers, ShoppingCart, Star, BookOpen } from "lucide-react";
+import { Ticket, Gem, Combine, Layers, ShoppingCart, Star, BookOpen, ArrowRight, Bell } from "lucide-react";
 import AnimatedTicketCascade from "@/components/animated-ticket-cascade";
 import TrendingTickets from "@/components/trending-tickets";
 import Ticket3D from "@/components/ticket-3d";
+import { Input } from "@/components/ui/input";
+import Link from "next/link";
 
 export default function Home() {
   const drawDate = new Date();
@@ -12,7 +14,7 @@ export default function Home() {
 
   return (
     <div className="space-y-24">
-      <section className="relative grid md:grid-cols-2 items-center gap-8 md:gap-16 py-12 px-4 rounded-xl overflow-hidden bg-card border">
+      <section className="relative grid md:grid-cols-2 items-center gap-8 md:gap-16 py-12 px-4 rounded-xl overflow-hidden bg-gradient-to-br from-card to-card/60 border">
          <AnimatedTicketCascade />
          <div className="relative z-10 text-left">
             <h1 className="text-5xl md:text-7xl font-headline font-bold text-primary mb-4">
@@ -65,73 +67,109 @@ export default function Home() {
             </p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          <Card>
+          <Card className="flex flex-col">
             <CardHeader className="flex flex-row items-center gap-4">
               <div className="p-3 rounded-full bg-primary/10 text-primary border border-primary/20">
                 <Gem className="h-6 w-6" />
               </div>
               <CardTitle className="font-headline text-xl">NFTs with Utility</CardTitle>
             </CardHeader>
-            <CardContent>
+            <CardContent className="flex-grow">
               <p className="text-muted-foreground">Each ticket is a tradable NFT, showcasing Algorand Standard Assets (ASAs) with embedded utility beyond simple collectibles.</p>
             </CardContent>
+            <CardFooter>
+                <Button variant="link" className="p-0">Learn More <ArrowRight className="ml-2 h-4 w-4"/></Button>
+            </CardFooter>
           </Card>
-           <Card>
+           <Card className="flex flex-col">
             <CardHeader className="flex flex-row items-center gap-4">
               <div className="p-3 rounded-full bg-primary/10 text-primary border border-primary/20">
                 <Combine className="h-6 w-6" />
               </div>
               <CardTitle className="font-headline text-xl">Composable Architecture</CardTitle>
             </CardHeader>
-            <CardContent>
+            <CardContent className="flex-grow">
               <p className="text-muted-foreground">Functionality is decomposed across modular smart contracts, providing a reusable and maintainable template for dApps.</p>
             </CardContent>
+             <CardFooter>
+                <Button variant="link" className="p-0">Learn More <ArrowRight className="ml-2 h-4 w-4"/></Button>
+            </CardFooter>
           </Card>
-           <Card>
+           <Card className="flex flex-col">
             <CardHeader className="flex flex-row items-center gap-4">
               <div className="p-3 rounded-full bg-primary/10 text-primary border border-primary/20">
                 <Layers className="h-6 w-6" />
               </div>
               <CardTitle className="font-headline text-xl">Full End-to-End dApp</CardTitle>
             </CardHeader>
-            <CardContent>
+            <CardContent className="flex-grow">
               <p className="text-muted-foreground">Includes the full stack: PyTeal contracts, a Python backend, and a modern React frontend with wallet integration.</p>
             </CardContent>
+             <CardFooter>
+                <Button variant="link" className="p-0">Learn More <ArrowRight className="ml-2 h-4 w-4"/></Button>
+            </CardFooter>
           </Card>
-          <Card>
+          <Card className="flex flex-col">
             <CardHeader className="flex flex-row items-center gap-4">
               <div className="p-3 rounded-full bg-primary/10 text-primary border border-primary/20">
                 <ShoppingCart className="h-6 w-6" />
               </div>
               <CardTitle className="font-headline text-xl">On-Chain Marketplace</CardTitle>
             </CardHeader>
-            <CardContent>
+            <CardContent className="flex-grow">
               <p className="text-muted-foreground">Trade tickets on a secondary market before the draw, all handled securely on-chain through escrow contracts.</p>
             </CardContent>
+             <CardFooter>
+                <Button variant="link" className="p-0">Learn More <ArrowRight className="ml-2 h-4 w-4"/></Button>
+            </CardFooter>
           </Card>
-          <Card>
+          <Card className="flex flex-col">
             <CardHeader className="flex flex-row items-center gap-4">
               <div className="p-3 rounded-full bg-primary/10 text-primary border border-primary/20">
                 <Star className="h-6 w-6" />
               </div>
               <CardTitle className="font-headline text-xl">Advanced Features</CardTitle>
             </CardHeader>
-            <CardContent>
+            <CardContent className="flex-grow">
               <p className="text-muted-foreground">Demonstrates on-chain randomness, referral rewards, and secure prize pool management using atomic transfers.</p>
             </CardContent>
+             <CardFooter>
+                <Button variant="link" className="p-0">Learn More <ArrowRight className="ml-2 h-4 w-4"/></Button>
+            </CardFooter>
           </Card>
-          <Card>
+          <Card className="flex flex-col">
             <CardHeader className="flex flex-row items-center gap-4">
               <div className="p-3 rounded-full bg-primary/10 text-primary border border-primary/20">
                 <BookOpen className="h-6 w-6" />
               </div>
               <CardTitle className="font-headline text-xl">Educational Value</CardTitle>
             </CardHeader>
-            <CardContent>
+            <CardContent className="flex-grow">
               <p className="text-muted-foreground">A well-documented, open-source repository that serves as a valuable tutorial and reference for Algorand developers.</p>
             </CardContent>
+             <CardFooter>
+                <Button variant="link" className="p-0">Learn More <ArrowRight className="ml-2 h-4 w-4"/></Button>
+            </CardFooter>
           </Card>
         </div>
+      </section>
+
+      <section>
+        <Card className="text-center p-8 md:p-12 bg-gradient-to-r from-accent/10 to-primary/10 border-2 border-dashed">
+            <CardHeader>
+                <Bell className="h-10 w-10 mx-auto text-accent"/>
+                <CardTitle className="text-3xl md:text-4xl font-headline font-bold mt-4">Never Miss a Draw</CardTitle>
+                <CardDescription className="max-w-md mx-auto text-lg mt-2">
+                    Subscribe to our newsletter to get notified about upcoming draws, winning numbers, and special promotions.
+                </CardDescription>
+            </CardHeader>
+            <CardContent>
+                <div className="flex flex-col sm:flex-row max-w-lg mx-auto gap-2">
+                    <Input type="email" placeholder="Enter your email address" className="flex-grow text-base"/>
+                    <Button size="lg" className="bg-accent text-accent-foreground hover:bg-accent/90 shadow-md">Subscribe</Button>
+                </div>
+            </CardContent>
+        </Card>
       </section>
     </div>
   );
