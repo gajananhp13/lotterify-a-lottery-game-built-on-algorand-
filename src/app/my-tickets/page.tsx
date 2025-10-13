@@ -22,7 +22,9 @@ export default function MyTicketsPage() {
             {userTickets.length > 0 ? (
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
                     {userTickets.map((ticket) => (
-                        <TicketCard key={ticket.id} ticket={ticket} />
+                        <div key={ticket.id} className="w-full">
+                            <TicketCard ticket={ticket} />
+                        </div>
                     ))}
                 </div>
             ) : (
