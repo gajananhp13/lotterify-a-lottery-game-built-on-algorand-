@@ -79,12 +79,16 @@ export function WalletProvider({ children }: { children: ReactNode }) {
 
         setAccounts(newAccounts);
         const newActiveAccount = newAccounts[0];
-        setActiveAccount(newActiveAccount);
+        
+        if (newActiveAccount) {
+            setActiveAccount(newActiveAccount);
 
-        toast({
-          title: "Wallet Connected!",
-          description: `Welcome, ${newActiveAccount.name || newActiveAccount.address}.`,
-        });
+            toast({
+              title: "Wallet Connected!",
+              description: `Welcome, ${newActiveAccount.name || newActiveAccount.address}.`,
+            });
+        }
+
 
         return newAccounts;
       })
