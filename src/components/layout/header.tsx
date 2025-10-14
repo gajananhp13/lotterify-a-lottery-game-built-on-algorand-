@@ -6,7 +6,7 @@ import { usePathname } from 'next/navigation';
 import { Button } from "@/components/ui/button";
 import ConnectWallet from "@/components/connect-wallet";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { Menu, Ticket, Store, Trophy } from "lucide-react";
+import { Menu, Ticket, Store, Trophy, LayoutDashboard } from "lucide-react";
 import { ThemeToggle } from "../theme-toggle";
 import { cn } from "@/lib/utils";
 
@@ -18,6 +18,7 @@ const Logo = () => (
 );
 
 const navItems = [
+    { href: "/dashboard", label: "Dashboard", icon: <LayoutDashboard className="h-4 w-4" /> },
     { href: "/my-tickets", label: "My Tickets", icon: <Ticket className="h-4 w-4" /> },
     { href: "/marketplace", label: "Marketplace", icon: <Store className="h-4 w-4" /> },
     { href: "/results", label: "Results", icon: <Trophy className="h-4 w-4" /> },
