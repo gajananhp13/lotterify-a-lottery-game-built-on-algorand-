@@ -10,6 +10,7 @@ import { mockTickets } from '@/lib/mock-data';
 import TicketCard from '@/components/ticket-card';
 import { Wallet, User, Gem, Ticket as TicketIcon } from 'lucide-react';
 import { Skeleton } from '@/components/ui/skeleton';
+import Link from 'next/link';
 
 const AlgoIcon = () => (
     <svg width="1em" height="1em" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" className="inline-block -mt-1">
@@ -42,11 +43,11 @@ export default function DashboardPage() {
         }
     }, [activeAccount, algodClient]);
     
-    // In a real app, this would be the connected user's address.
-    const currentUserAddress = activeAccount?.address || "USER...V3RSE";
-    const userTickets = mockTickets.filter(
-        (ticket) => ticket.ownerAddress === (activeAccount ? 'USER...V3RSE' : '')
-    );
+    // In a real app, you would fetch the user's tickets from the blockchain.
+    // For this demo, we filter mock data based on the connected account.
+    const userTickets = activeAccount 
+        ? mockTickets.filter((ticket) => ticket.ownerAddress === activeAccount.address)
+        : [];
 
     if (!activeAccount) {
         return (
@@ -117,7 +118,9 @@ export default function DashboardPage() {
                             You don't own any lottery tickets. Visit the marketplace to buy your first one.
                         </AlertDescription>
                          <div className="mt-4">
-                            <Button>Buy a Ticket</Button>
+                            <Button asChild>
+                               <Link href="/marketplace">Buy a Ticket</Link>
+                            </Button>
                         </div>
                     </Alert>
                 )}

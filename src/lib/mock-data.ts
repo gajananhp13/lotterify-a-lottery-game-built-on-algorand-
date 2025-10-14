@@ -1,3 +1,5 @@
+import {PeraWalletConnect} from '@perawallet/connect';
+
 export type Ticket = {
   id: number;
   roundNumber: number;
@@ -15,7 +17,9 @@ export type Winner = {
   drawDate: string;
 };
 
-const MOCK_ADDRESS_1 = "USER...V3RSE";
+// This is a mock address. In a real app, you'd get this from the wallet connection.
+// To test the UI, you can connect a wallet and some tickets will be assigned to it.
+const MOCK_ADDRESS_1 = new PeraWalletConnect().connector?.accounts[0] || "USER...V3RSE";
 const MOCK_ADDRESS_2 = "ALICE...XMPL";
 const MOCK_ADDRESS_3 = "BOB...TEST";
 
