@@ -39,6 +39,7 @@ export default function DashboardPage() {
                     setLoading(false);
                 });
         } else {
+            setBalance(null);
             setLoading(false);
         }
     }, [activeAccount, algodClient]);
@@ -91,7 +92,7 @@ export default function DashboardPage() {
                             <Skeleton className="h-8 w-48" />
                         ) : (
                            <p className="font-headline text-2xl font-bold text-primary">
-                                <AlgoIcon /> {balance?.toLocaleString() ?? 'N/A'} ALGO
+                                <AlgoIcon /> {balance !== null ? balance.toLocaleString() : 'N/A'} ALGO
                             </p>
                         )}
                     </div>
