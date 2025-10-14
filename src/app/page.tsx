@@ -1,3 +1,4 @@
+
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import CountdownTimer from "@/components/countdown-timer";
@@ -17,7 +18,7 @@ export default function Home() {
       <section className="relative grid md:grid-cols-2 items-center gap-8 md:gap-16 py-12 px-4 rounded-xl overflow-hidden bg-gradient-to-br from-card to-card/60 border">
          <AnimatedTicketCascade />
          <div className="relative z-10 text-left">
-            <h1 className="text-5xl md:text-7xl font-headline font-bold text-primary mb-4">
+            <h1 className="text-5xl md:text-7xl font-headline font-bold text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent mb-4">
               The Fair Algorand Lottery
             </h1>
             <p className="text-lg md:text-xl text-muted-foreground max-w-xl mb-8">
