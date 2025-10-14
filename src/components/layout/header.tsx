@@ -10,6 +10,7 @@ import { Menu, Ticket as TicketIcon, Store, Trophy, LayoutDashboard } from "luci
 import { ThemeToggle } from "../theme-toggle";
 import { cn } from "@/lib/utils";
 import NetworkSwitcher from "../network-switcher";
+import { useEffect, useState } from "react";
 
 const Logo = () => (
     <Link href="/" className="flex items-center gap-2" aria-label="Lotterify Home">
@@ -27,6 +28,11 @@ const navItems = [
 
 export default function Header() {
     const pathname = usePathname();
+    const [isClient, setIsClient] = useState(false);
+
+    useEffect(() => {
+        setIsClient(true);
+    }, []);
 
     return (
         <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
@@ -75,7 +81,7 @@ export default function Header() {
                         {navItems.map((item) => (
                             <Button key={item.href} variant="ghost" asChild className={cn(
                                 "nav-link-hover",
-                                pathname === item.href ? "text-primary font-semibold" : "hover:bg-transparent"
+                                isClient && pathname === item.href ? "text-primary font-semibold" : "hover:bg-transparent"
                             )}>
                                 <Link href={item.href}>{item.label}</Link>
                             </Button>
