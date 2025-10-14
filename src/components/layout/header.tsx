@@ -73,7 +73,7 @@ export default function Header() {
                 <div className="flex flex-1 items-center justify-between space-x-2 md:justify-end">
                     <nav className="hidden md:flex items-center space-x-2">
                         {navItems.map((item) => (
-                            <Link key={item.href} href={item.href} legacyBehavior passHref>
+                            <Link key={item.href} href={item.href}>
                                 <Button variant="ghost" as="a" className={cn(
                                     "nav-link-hover",
                                     pathname === item.href ? "text-primary font-semibold" : "hover:bg-transparent"
