@@ -6,21 +6,21 @@ import { usePathname } from 'next/navigation';
 import { Button } from "@/components/ui/button";
 import ConnectWallet from "@/components/connect-wallet";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { Menu, Ticket, Store, Trophy, LayoutDashboard } from "lucide-react";
+import { Menu, Ticket as TicketIcon, Store, Trophy, LayoutDashboard } from "lucide-react";
 import { ThemeToggle } from "../theme-toggle";
 import { cn } from "@/lib/utils";
 import NetworkSwitcher from "../network-switcher";
 
 const Logo = () => (
     <Link href="/" className="flex items-center gap-2" aria-label="Lotterify Home">
-        <Ticket className="h-8 w-8 text-primary" />
+        <TicketIcon className="h-8 w-8 text-primary" />
         <span className="text-2xl font-headline font-bold">Lotterify</span>
     </Link>
 );
 
 const navItems = [
     { href: "/dashboard", label: "Dashboard", icon: <LayoutDashboard className="h-4 w-4" /> },
-    { href: "/my-tickets", label: "My Tickets", icon: <Ticket className="h-4 w-4" /> },
+    { href: "/my-tickets", label: "My Tickets", icon: <TicketIcon className="h-4 w-4" /> },
     { href: "/marketplace", label: "Marketplace", icon: <Store className="h-4 w-4" /> },
     { href: "/results", label: "Results", icon: <Trophy className="h-4 w-4" /> },
 ];
@@ -74,8 +74,8 @@ export default function Header() {
                     <nav className="hidden md:flex items-center space-x-2">
                         {navItems.map((item) => (
                             <Button key={item.href} variant="ghost" asChild className={cn(
-                                "transition-colors",
-                                pathname === item.href ? "bg-muted text-foreground" : "hover:bg-muted/50"
+                                "nav-link-hover",
+                                pathname === item.href ? "text-primary font-semibold" : "hover:bg-transparent"
                             )}>
                                 <Link href={item.href}>
                                     {item.label}
