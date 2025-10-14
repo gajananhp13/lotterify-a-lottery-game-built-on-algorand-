@@ -9,6 +9,7 @@ import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Menu, Ticket, Store, Trophy, LayoutDashboard } from "lucide-react";
 import { ThemeToggle } from "../theme-toggle";
 import { cn } from "@/lib/utils";
+import NetworkSwitcher from "../network-switcher";
 
 const Logo = () => (
     <Link href="/" className="flex items-center gap-2" aria-label="Lotterify Home">
@@ -62,6 +63,9 @@ export default function Header() {
                                     </Link>
                                 ))}
                             </nav>
+                             <div className="mt-6">
+                                <NetworkSwitcher />
+                            </div>
                         </SheetContent>
                     </Sheet>
                 </div>
@@ -81,6 +85,9 @@ export default function Header() {
                     </nav>
                     <div className="flex items-center gap-2">
                         <ConnectWallet />
+                        <div className="hidden md:flex">
+                            <NetworkSwitcher />
+                        </div>
                         <ThemeToggle />
                     </div>
                 </div>

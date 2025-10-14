@@ -3,9 +3,10 @@
 
 import { PeraWalletConnect } from "@perawallet/connect";
 import type { Account } from "@perawallet/connect/dist/util/model/peraWalletModels";
-import { createContext, useState, useEffect, ReactNode } from "react";
+import { createContext, useState, useEffect, ReactNode, useMemo, useCallback } from "react";
 import algosdk from "algosdk";
 import { useToast } from "@/hooks/use-toast";
+import { getAlgodClient, Network, networks } from "@/lib/algorand";
 
 interface IWalletContext {
   accounts: Account[];
@@ -14,33 +15,45 @@ interface IWalletContext {
   disconnect: () => void;
   peraWallet: PeraWalletConnect;
   algodClient: algosdk.Algodv2;
+  network: Network;
+  setNetwork: (network: Network) => void;
 }
 
 export const WalletContext = createContext<IWalletContext | undefined>(undefined);
 
-// Initialize PeraWalletConnect and let the wallet negotiate the chainId
-const peraWallet = new PeraWalletConnect({
-  shouldShowSignTxnToast: false,
-});
-
-const algodClient = new algosdk.Algodv2(
-  "", // No token needed for public TestNet client
-  "https://testnet-api.algonode.cloud",
-  ""
-);
-
-
 export function WalletProvider({ children }: { children: ReactNode }) {
   const [accounts, setAccounts] = useState<Account[]>([]);
   const [activeAccount, setActiveAccount] = useState<Account | null>(null);
+  const [network, setNetwork] = useState<Network>("testnet");
   const { toast } = useToast();
 
-  const handleDisconnect = () => {
-    // We are only clearing the state here, not calling peraWallet.disconnect()
-    // to avoid the "Missing or invalid topic field" error. The wallet provider
-    // and Pera extension will handle the session termination.
+  const algodClient = useMemo(() => getAlgodClient(network), [network]);
+
+  const peraWallet = useMemo(() => {
+    return new PeraWalletConnect({
+      chainId: network === "testnet" ? 416002 : 416001,
+      shouldShowSignTxnToast: false,
+    });
+  }, [network]);
+
+  const handleDisconnect = useCallback(() => {
     setAccounts([]);
     setActiveAccount(null);
+    if(peraWallet.connector) {
+      peraWallet.disconnect();
+    }
+  }, [peraWallet]);
+
+  const handleSetNetwork = (newNetwork: Network) => {
+    if (activeAccount) {
+      toast({
+        variant: "destructive",
+        title: "Network Change Disabled",
+        description: "Disconnect your wallet before switching networks.",
+      });
+      return;
+    }
+    setNetwork(newNetwork);
   };
 
   useEffect(() => {
@@ -55,19 +68,17 @@ export function WalletProvider({ children }: { children: ReactNode }) {
           setActiveAccount(connectedAccounts[0]);
         }
       } catch (error) {
-        // Don't log the reconnect error to the console, it's noisy
+        // Suppress noisy reconnect errors
       }
     };
     reconnect();
 
-    // Cleanup listener on component unmount
     return () => {
       if (peraWallet.connector) {
         peraWallet.connector.off("disconnect", handleDisconnect);
       }
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+    };
+  }, [peraWallet, handleDisconnect]);
 
   function handleConnect() {
     return peraWallet
@@ -100,7 +111,9 @@ export function WalletProvider({ children }: { children: ReactNode }) {
     connect: handleConnect,
     disconnect: handleDisconnect,
     peraWallet,
-    algodClient
+    algodClient,
+    network,
+    setNetwork: handleSetNetwork,
   };
 
   return (
