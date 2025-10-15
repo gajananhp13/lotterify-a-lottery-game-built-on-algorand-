@@ -37,11 +37,11 @@ export function WalletProvider({ children }: { children: ReactNode }) {
   }, [network]);
 
   const handleDisconnect = useCallback(() => {
-    setAccounts([]);
-    setActiveAccount(null);
     if(peraWallet.connector) {
       peraWallet.disconnect();
     }
+    setAccounts([]);
+    setActiveAccount(null);
   }, [peraWallet]);
 
   const handleSetNetwork = (newNetwork: Network) => {
