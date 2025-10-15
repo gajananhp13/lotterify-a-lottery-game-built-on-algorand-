@@ -67,8 +67,8 @@ export default function Home() {
               Lotterify is more than just a lottery. It's a demonstration of the power and flexibility of the Algorand blockchain.
             </p>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          <Card className="flex flex-col">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <Card className="flex flex-col bg-card/60 hover:bg-card/90 border-border/20 hover:border-primary/20 transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
             <CardHeader className="flex flex-row items-center gap-4">
               <div className="p-3 rounded-full bg-primary/10 text-primary border border-primary/20">
                 <Gem className="h-6 w-6" />
@@ -79,10 +79,10 @@ export default function Home() {
               <p className="text-muted-foreground">Each ticket is a tradable NFT, showcasing Algorand Standard Assets (ASAs) with embedded utility beyond simple collectibles.</p>
             </CardContent>
             <CardFooter>
-                <Button variant="link" className="p-0">Learn More <ArrowRight className="ml-2 h-4 w-4"/></Button>
+                <Button variant="link" className="p-0 text-primary/80 hover:text-primary">Learn More <ArrowRight className="ml-2 h-4 w-4"/></Button>
             </CardFooter>
           </Card>
-           <Card className="flex flex-col">
+           <Card className="flex flex-col bg-card/60 hover:bg-card/90 border-border/20 hover:border-primary/20 transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
             <CardHeader className="flex flex-row items-center gap-4">
               <div className="p-3 rounded-full bg-primary/10 text-primary border border-primary/20">
                 <Combine className="h-6 w-6" />
@@ -93,10 +93,10 @@ export default function Home() {
               <p className="text-muted-foreground">Functionality is decomposed across modular smart contracts, providing a reusable and maintainable template for dApps.</p>
             </CardContent>
              <CardFooter>
-                <Button variant="link" className="p-0">Learn More <ArrowRight className="ml-2 h-4 w-4"/></Button>
+                <Button variant="link" className="p-0 text-primary/80 hover:text-primary">Learn More <ArrowRight className="ml-2 h-4 w-4"/></Button>
             </CardFooter>
           </Card>
-           <Card className="flex flex-col">
+           <Card className="flex flex-col bg-card/60 hover:bg-card/90 border-border/20 hover:border-primary/20 transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
             <CardHeader className="flex flex-row items-center gap-4">
               <div className="p-3 rounded-full bg-primary/10 text-primary border border-primary/20">
                 <Layers className="h-6 w-6" />
@@ -107,10 +107,10 @@ export default function Home() {
               <p className="text-muted-foreground">Includes the full stack: PyTeal contracts, a Python backend, and a modern React frontend with wallet integration.</p>
             </CardContent>
              <CardFooter>
-                <Button variant="link" className="p-0">Learn More <ArrowRight className="ml-2 h-4 w-4"/></Button>
+                <Button variant="link" className="p-0 text-primary/80 hover:text-primary">Learn More <ArrowRight className="ml-2 h-4 w-4"/></Button>
             </CardFooter>
           </Card>
-          <Card className="flex flex-col">
+          <Card className="flex flex-col bg-card/60 hover:bg-card/90 border-border/20 hover:border-primary/20 transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
             <CardHeader className="flex flex-row items-center gap-4">
               <div className="p-3 rounded-full bg-primary/10 text-primary border border-primary/20">
                 <ShoppingCart className="h-6 w-6" />
@@ -121,10 +121,10 @@ export default function Home() {
               <p className="text-muted-foreground">Trade tickets on a secondary market before the draw, all handled securely on-chain through escrow contracts.</p>
             </CardContent>
              <CardFooter>
-                <Button variant="link" className="p-0">Learn More <ArrowRight className="ml-2 h-4 w-4"/></Button>
+                <Button variant="link" className="p-0 text-primary/80 hover:text-primary">Learn More <ArrowRight className="ml-2 h-4 w-4"/></Button>
             </CardFooter>
           </Card>
-          <Card className="flex flex-col">
+          <Card className="flex flex-col bg-card/60 hover:bg-card/90 border-border/20 hover:border-primary/20 transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
             <CardHeader className="flex flex-row items-center gap-4">
               <div className="p-3 rounded-full bg-primary/10 text-primary border border-primary/20">
                 <Star className="h-6 w-6" />
@@ -135,10 +135,10 @@ export default function Home() {
               <p className="text-muted-foreground">Demonstrates on-chain randomness, referral rewards, and secure prize pool management using atomic transfers.</p>
             </CardContent>
              <CardFooter>
-                <Button variant="link" className="p-0">Learn More <ArrowRight className="ml-2 h-4 w-4"/></Button>
+                <Button variant="link" className="p-0 text-primary/80 hover:text-primary">Learn More <ArrowRight className="ml-2 h-4 w-4"/></Button>
             </CardFooter>
           </Card>
-          <Card className="flex flex-col">
+          <Card className="flex flex-col bg-card/60 hover:bg-card/90 border-border/20 hover:border-primary/20 transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
             <CardHeader className="flex flex-row items-center gap-4">
               <div className="p-3 rounded-full bg-primary/10 text-primary border border-primary/20">
                 <BookOpen className="h-6 w-6" />
@@ -149,7 +149,7 @@ export default function Home() {
               <p className="text-muted-foreground">A well-documented, open-source repository that serves as a valuable tutorial and reference for Algorand developers.</p>
             </CardContent>
              <CardFooter>
-                <Button variant="link" className="p-0">Learn More <ArrowRight className="ml-2 h-4 w-4"/></Button>
+                <Button variant="link" className="p-0 text-primary/80 hover:text-primary">Learn More <ArrowRight className="ml-2 h-4 w-4"/></Button>
             </CardFooter>
           </Card>
         </div>
