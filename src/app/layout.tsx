@@ -31,7 +31,6 @@ export default function RootLayout({
         )}
         suppressHydrationWarning={true}
       >
-        <div className="aurora-bg"></div>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"

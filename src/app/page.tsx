@@ -5,7 +5,6 @@ import CountdownTimer from "@/components/countdown-timer";
 import { Ticket, Gem, Combine, Layers, ShoppingCart, Star, BookOpen, ArrowRight, Bell } from "lucide-react";
 import AnimatedTicketCascade from "@/components/animated-ticket-cascade";
 import TrendingTickets from "@/components/trending-tickets";
-import Ticket3D from "@/components/ticket-3d";
 import { Input } from "@/components/ui/input";
 import Link from "next/link";
 import AnimatedText from "@/components/animated-text";
@@ -20,18 +19,15 @@ export default function Home() {
     <div className="space-y-24">
       <section className="relative grid md:grid-cols-2 items-center gap-8 md:gap-16 py-12 px-4 rounded-xl overflow-hidden glass-card">
          <AnimatedTicketCascade />
-         <div className="relative z-10 text-left">
+         <div className="relative z-10 text-center md:text-left col-span-2 md:col-span-1">
             <h1 className="text-5xl md:text-7xl font-headline font-bold text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent mb-4">
               The Fair Algorand Lottery
             </h1>
-            <AnimatedText text={heroText} className="text-lg md:text-xl text-muted-foreground max-w-xl mb-8" />
+            <AnimatedText text={heroText} className="text-lg md:text-xl text-muted-foreground max-w-xl mb-8 mx-auto md:mx-0" />
             <Button size="lg" className="bg-accent text-accent-foreground hover:bg-accent/90 text-lg px-8 py-6 shadow-lg hover:shadow-xl transition-shadow duration-300">
               <Ticket className="mr-2 h-6 w-6" />
               Buy a Ticket Now
             </Button>
-         </div>
-         <div className="relative z-10 hidden md:flex justify-center items-center">
-            <Ticket3D />
          </div>
       </section>
 
