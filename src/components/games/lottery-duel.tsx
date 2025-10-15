@@ -97,58 +97,57 @@ export default function LotteryDuel() {
     }
 
     return (
-        <Card className="glass-card relative overflow-hidden">
+        <div className="glass-card relative overflow-hidden p-6 md:p-8">
             {gameState === 'finished' && winner && <Confetti />}
-            <CardHeader className="text-center">
+             <div className="text-center mb-8">
                  <div className="mx-auto bg-primary/10 text-primary border border-primary/20 rounded-full p-4 w-fit mb-4">
                     <Swords className="h-8 w-8" />
                 </div>
-                <CardTitle className="font-headline text-3xl">Lottery Duel (1v1)</CardTitle>
-                <CardDescription>Stake your ALGO in a head-to-head, winner-takes-all match. Fair, random, and on-chain.</CardDescription>
-            </CardHeader>
-            <CardContent>
-                <div className="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-4 relative">
-                    <AnimatePresence><PlayerCard player={player1} isWinner={winner?.address === player1?.address} /></AnimatePresence>
-                    
-                    <motion.div 
-                        className="text-center font-headline text-4xl text-muted-foreground my-4 md:my-0 md:mx-8"
-                        initial={{ scale: 0 }}
-                        animate={{ scale: 1 }}
-                        transition={{ delay: 0.2, type: 'spring' }}
-                    >
-                        VS
+                <h2 className="font-headline text-3xl">Lottery Duel (1v1)</h2>
+                <p className="text-muted-foreground">Stake your ALGO in a head-to-head, winner-takes-all match. Fair, random, and on-chain.</p>
+            </div>
+
+            <div className="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-4 relative">
+                <AnimatePresence><PlayerCard player={player1} isWinner={winner?.address === player1?.address} /></AnimatePresence>
+                
+                <motion.div 
+                    className="text-center font-headline text-4xl text-muted-foreground my-4 md:my-0 md:mx-8"
+                    initial={{ scale: 0 }}
+                    animate={{ scale: 1 }}
+                    transition={{ delay: 0.2, type: 'spring' }}
+                >
+                    VS
+                </motion.div>
+
+                <AnimatePresence><PlayerCard player={player2} isWinner={winner?.address === player2?.address} /></AnimatePresence>
+            </div>
+
+            <div className="mt-8 text-center">
+                {gameState === 'waiting' && (
+                    <motion.div initial={{opacity: 0}} animate={{opacity: 1}}>
+                        <p className="text-muted-foreground mb-4">Entry Amount: <span className="font-bold text-primary font-headline">{entryAmount} ALGO</span></p>
+                        <Button size="lg" onClick={handleJoin} disabled={!!player2}>
+                            <Shield className="mr-2" /> {player1 ? 'Waiting for Challenger' : `Join Duel for ${entryAmount} ALGO`}
+                        </Button>
                     </motion.div>
-
-                    <AnimatePresence><PlayerCard player={player2} isWinner={winner?.address === player2?.address} /></AnimatePresence>
-                </div>
-
-                <div className="mt-8 text-center">
-                    {gameState === 'waiting' && (
-                        <motion.div initial={{opacity: 0}} animate={{opacity: 1}}>
-                            <p className="text-muted-foreground mb-4">Entry Amount: <span className="font-bold text-primary font-headline">{entryAmount} ALGO</span></p>
-                            <Button size="lg" onClick={handleJoin} disabled={!!player2}>
-                                <Shield className="mr-2" /> {player1 ? 'Waiting for Challenger' : `Join Duel for ${entryAmount} ALGO`}
-                            </Button>
-                        </motion.div>
-                    )}
-                    {gameState === 'active' && (
-                        <motion.div initial={{opacity: 0}} animate={{opacity: 1}} className="space-y-4">
-                           <p className="text-2xl font-headline">Total Pot: <span className="font-bold text-primary">{entryAmount * 2} ALGO</span></p>
-                           <p className="text-4xl font-bold font-headline text-accent animate-pulse">{countdown > 0 ? `Selecting winner in ${countdown}...` : 'Revealing Winner...'}</p>
-                        </motion.div>
-                    )}
-                    {gameState === 'finished' && winner && (
-                         <motion.div initial={{opacity: 0, y: 20}} animate={{opacity: 1, y: 0}} className="space-y-4">
-                            <p className="text-2xl font-headline">🎉 <span className="font-bold text-accent font-mono text-lg">{winner.address}</span> wins the pot! 🎉</p>
-                            <p className="text-4xl font-bold font-headline text-primary">{(entryAmount * 2) * 0.95} ALGO</p>
-                             <div className="flex justify-center gap-4 mt-6">
-                                <Button size="lg" variant="outline" onClick={handlePlayAgain}><Repeat className="mr-2"/>Play Again</Button>
-                                <Button size="lg"><Gem className="mr-2"/>Withdraw Winnings</Button>
-                            </div>
-                        </motion.div>
-                    )}
-                </div>
-            </CardContent>
-        </Card>
+                )}
+                {gameState === 'active' && (
+                    <motion.div initial={{opacity: 0}} animate={{opacity: 1}} className="space-y-4">
+                       <p className="text-2xl font-headline">Total Pot: <span className="font-bold text-primary">{entryAmount * 2} ALGO</span></p>
+                       <p className="text-4xl font-bold font-headline text-accent animate-pulse">{countdown > 0 ? `Selecting winner in ${countdown}...` : 'Revealing Winner...'}</p>
+                    </motion.div>
+                )}
+                {gameState === 'finished' && winner && (
+                     <motion.div initial={{opacity: 0, y: 20}} animate={{opacity: 1, y: 0}} className="space-y-4">
+                        <p className="text-2xl font-headline">🎉 <span className="font-bold text-accent font-mono text-lg">{winner.address}</span> wins the pot! 🎉</p>
+                        <p className="text-4xl font-bold font-headline text-primary">{(entryAmount * 2) * 0.95} ALGO</p>
+                         <div className="flex justify-center gap-4 mt-6">
+                            <Button size="lg" variant="outline" onClick={handlePlayAgain}><Repeat className="mr-2"/>Play Again</Button>
+                            <Button size="lg"><Gem className="mr-2"/>Withdraw Winnings</Button>
+                        </div>
+                    </motion.div>
+                )}
+            </div>
+        </div>
     );
 }

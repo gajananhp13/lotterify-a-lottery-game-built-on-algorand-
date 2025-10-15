@@ -4,9 +4,10 @@ import { useState } from "react";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Coins, Scissors, Hand, Gem, Trophy, Users, Shield, Swords } from "lucide-react";
+import { Coins, Scissors, Hand, Gem, Trophy, Users, Shield, Swords, Play } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import LotteryDuel from "@/components/games/lottery-duel";
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 
 const AlgoIcon = () => (
     <svg width="1em" height="1em" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" className="inline-block h-5 w-5 ml-1">
@@ -58,7 +59,27 @@ export default function GamesPage() {
                 </p>
             </header>
 
-            <LotteryDuel />
+            <Dialog>
+                <Card className="glass-card relative overflow-hidden group">
+                    <CardHeader className="text-center">
+                        <div className="mx-auto bg-primary/10 text-primary border border-primary/20 rounded-full p-4 w-fit mb-4 transition-transform group-hover:scale-110">
+                            <Swords className="h-8 w-8" />
+                        </div>
+                        <CardTitle className="font-headline text-3xl">Lottery Duel (1v1)</CardTitle>
+                        <CardDescription>Stake your ALGO in a head-to-head, winner-takes-all match. Fair, random, and on-chain.</CardDescription>
+                    </CardHeader>
+                    <CardContent className="text-center">
+                        <DialogTrigger asChild>
+                            <Button size="lg">
+                                <Play className="mr-2" /> Play Now
+                            </Button>
+                        </DialogTrigger>
+                    </CardContent>
+                </Card>
+                <DialogContent className="max-w-4xl p-0 border-0 bg-transparent">
+                     <LotteryDuel />
+                </DialogContent>
+            </Dialog>
 
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
                 <Card className="glass-card flex flex-col transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 hover:border-primary/50 lg:col-span-2">
