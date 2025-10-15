@@ -77,7 +77,13 @@ export default function GamesPage() {
                     </CardContent>
                 </Card>
                 <DialogContent className="max-w-4xl p-0 border-0 bg-transparent">
-                     <LotteryDuel />
+                     <DialogHeader className="p-6 pb-0">
+                        <DialogTitle className="font-headline text-3xl text-center">Lottery Duel (1v1)</DialogTitle>
+                        <DialogDescription className="text-center text-muted-foreground">
+                            Two players enter, one player leaves with the prize. Good luck.
+                        </DialogDescription>
+                    </DialogHeader>
+                    <LotteryDuel />
                 </DialogContent>
             </Dialog>
 

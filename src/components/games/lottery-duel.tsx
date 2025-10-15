@@ -25,9 +25,9 @@ const AlgoIcon = () => (
 const PlayerCard = ({ player, isWinner }: { player: Player | null; isWinner?: boolean }) => (
     <motion.div 
       className={cn(
-        "glass-card p-6 rounded-2xl flex flex-col items-center gap-4 w-full md:w-64 border-2 transition-all duration-500",
+        "bg-white/5 p-6 rounded-2xl flex flex-col items-center gap-4 w-full md:w-64 border-2 transition-all duration-500",
         isWinner ? "border-accent shadow-accent/40 shadow-2xl" : "border-transparent",
-        !player && "border-dashed"
+        !player && "border-dashed border-white/20"
       )}
       initial={{ scale: 0.8, opacity: 0 }}
       animate={{ scale: 1, opacity: 1 }}
@@ -97,15 +97,8 @@ export default function LotteryDuel() {
     }
 
     return (
-        <div className="glass-card relative overflow-hidden p-6 md:p-8">
+        <div className="relative overflow-hidden p-6 md:p-8">
             {gameState === 'finished' && winner && <Confetti />}
-             <div className="text-center mb-8">
-                 <div className="mx-auto bg-primary/10 text-primary border border-primary/20 rounded-full p-4 w-fit mb-4">
-                    <Swords className="h-8 w-8" />
-                </div>
-                <h2 className="font-headline text-3xl">Lottery Duel (1v1)</h2>
-                <p className="text-muted-foreground">Stake your ALGO in a head-to-head, winner-takes-all match. Fair, random, and on-chain.</p>
-            </div>
 
             <div className="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-4 relative">
                 <AnimatePresence><PlayerCard player={player1} isWinner={winner?.address === player1?.address} /></AnimatePresence>
