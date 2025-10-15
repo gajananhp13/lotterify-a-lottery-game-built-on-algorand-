@@ -35,7 +35,7 @@ export default function Header() {
     }, []);
 
     return (
-        <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+        <header className="sticky top-0 z-50 w-full border-b bg-background/60 backdrop-blur-lg border-white/10">
             <div className="container flex h-16 items-center">
                 <div className="mr-4 hidden md:flex">
                     <Logo />
@@ -49,7 +49,7 @@ export default function Header() {
                                 <span className="sr-only">Toggle Menu</span>
                             </Button>
                         </SheetTrigger>
-                        <SheetContent side="left">
+                        <SheetContent side="left" className="bg-background/80 backdrop-blur-xl">
                             <div className="py-6">
                                 <Logo />
                             </div>
@@ -80,7 +80,7 @@ export default function Header() {
                     <nav className="hidden md:flex items-center space-x-2">
                         {navItems.map((item) => (
                             <Button key={item.href} variant="ghost" asChild className={cn(
-                                "nav-link-hover",
+                                "nav-link-hover font-body",
                                 isClient && pathname === item.href ? "text-primary font-semibold" : "hover:bg-transparent"
                             )}>
                                 <Link href={item.href}>{item.label}</Link>

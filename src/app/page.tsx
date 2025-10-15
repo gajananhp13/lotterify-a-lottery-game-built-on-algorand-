@@ -9,6 +9,7 @@ import Ticket3D from "@/components/ticket-3d";
 import { Input } from "@/components/ui/input";
 import Link from "next/link";
 import AnimatedText from "@/components/animated-text";
+import { cn } from "@/lib/utils";
 
 export default function Home() {
   const drawDate = new Date();
@@ -17,7 +18,7 @@ export default function Home() {
 
   return (
     <div className="space-y-24">
-      <section className="relative grid md:grid-cols-2 items-center gap-8 md:gap-16 py-12 px-4 rounded-xl overflow-hidden bg-gradient-to-br from-card to-card/60 border">
+      <section className="relative grid md:grid-cols-2 items-center gap-8 md:gap-16 py-12 px-4 rounded-xl overflow-hidden glass-card">
          <AnimatedTicketCascade />
          <div className="relative z-10 text-left">
             <h1 className="text-5xl md:text-7xl font-headline font-bold text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent mb-4">
@@ -39,7 +40,7 @@ export default function Home() {
       </section>
 
       <section className="grid md:grid-cols-2 gap-8">
-        <Card className="flex flex-col items-center justify-center text-center p-8 border-2 border-primary/20 bg-primary/5 hover:border-primary/50 transition-colors">
+        <Card className="glass-card flex flex-col items-center justify-center text-center p-8 border-2 border-primary/20 bg-primary/5 hover:border-primary/50 transition-colors">
           <CardHeader>
             <CardTitle className="text-2xl font-headline text-muted-foreground">Current Prize Pool</CardTitle>
           </CardHeader>
@@ -50,7 +51,7 @@ export default function Home() {
             </p>
           </CardContent>
         </Card>
-        <Card className="flex flex-col items-center justify-center text-center p-8 border-2 border-accent/20 bg-accent/5 hover:border-accent/50 transition-colors">
+        <Card className="glass-card flex flex-col items-center justify-center text-center p-8 border-2 border-accent/20 bg-accent/5 hover:border-accent/50 transition-colors">
            <CardHeader>
             <CardTitle className="text-2xl font-headline text-muted-foreground">Next Draw In</CardTitle>
           </CardHeader>
@@ -68,7 +69,7 @@ export default function Home() {
             </p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <Card className="flex flex-col bg-card/60 hover:bg-card/90 border-border/20 hover:border-primary/20 transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
+          <Card className="flex flex-col glass-card transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 hover:border-primary/50">
             <CardHeader className="flex flex-row items-center gap-4">
               <div className="p-3 rounded-full bg-primary/10 text-primary border border-primary/20">
                 <Gem className="h-6 w-6" />
@@ -82,7 +83,7 @@ export default function Home() {
                 <Button variant="link" className="p-0 text-primary/80 hover:text-primary">Learn More <ArrowRight className="ml-2 h-4 w-4"/></Button>
             </CardFooter>
           </Card>
-           <Card className="flex flex-col bg-card/60 hover:bg-card/90 border-border/20 hover:border-primary/20 transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
+           <Card className="flex flex-col glass-card transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 hover:border-primary/50">
             <CardHeader className="flex flex-row items-center gap-4">
               <div className="p-3 rounded-full bg-primary/10 text-primary border border-primary/20">
                 <Combine className="h-6 w-6" />
@@ -96,7 +97,7 @@ export default function Home() {
                 <Button variant="link" className="p-0 text-primary/80 hover:text-primary">Learn More <ArrowRight className="ml-2 h-4 w-4"/></Button>
             </CardFooter>
           </Card>
-           <Card className="flex flex-col bg-card/60 hover:bg-card/90 border-border/20 hover:border-primary/20 transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
+           <Card className="flex flex-col glass-card transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 hover:border-primary/50">
             <CardHeader className="flex flex-row items-center gap-4">
               <div className="p-3 rounded-full bg-primary/10 text-primary border border-primary/20">
                 <Layers className="h-6 w-6" />
@@ -110,7 +111,7 @@ export default function Home() {
                 <Button variant="link" className="p-0 text-primary/80 hover:text-primary">Learn More <ArrowRight className="ml-2 h-4 w-4"/></Button>
             </CardFooter>
           </Card>
-          <Card className="flex flex-col bg-card/60 hover:bg-card/90 border-border/20 hover:border-primary/20 transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
+          <Card className="flex flex-col glass-card transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 hover:border-primary/50">
             <CardHeader className="flex flex-row items-center gap-4">
               <div className="p-3 rounded-full bg-primary/10 text-primary border border-primary/20">
                 <ShoppingCart className="h-6 w-6" />
@@ -124,7 +125,7 @@ export default function Home() {
                 <Button variant="link" className="p-0 text-primary/80 hover:text-primary">Learn More <ArrowRight className="ml-2 h-4 w-4"/></Button>
             </CardFooter>
           </Card>
-          <Card className="flex flex-col bg-card/60 hover:bg-card/90 border-border/20 hover:border-primary/20 transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
+          <Card className="flex flex-col glass-card transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 hover:border-primary/50">
             <CardHeader className="flex flex-row items-center gap-4">
               <div className="p-3 rounded-full bg-primary/10 text-primary border border-primary/20">
                 <Star className="h-6 w-6" />
@@ -138,7 +139,7 @@ export default function Home() {
                 <Button variant="link" className="p-0 text-primary/80 hover:text-primary">Learn More <ArrowRight className="ml-2 h-4 w-4"/></Button>
             </CardFooter>
           </Card>
-          <Card className="flex flex-col bg-card/60 hover:bg-card/90 border-border/20 hover:border-primary/20 transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
+          <Card className="flex flex-col glass-card transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 hover:border-primary/50">
             <CardHeader className="flex flex-row items-center gap-4">
               <div className="p-3 rounded-full bg-primary/10 text-primary border border-primary/20">
                 <BookOpen className="h-6 w-6" />
@@ -156,11 +157,11 @@ export default function Home() {
       </section>
 
       <section>
-        <Card className="text-center p-8 md:p-12 bg-gradient-to-r from-accent/10 to-primary/10 border-2 border-dashed">
+        <Card className="glass-card text-center p-8 md:p-12 border-2 border-dashed">
             <CardHeader>
                 <Bell className="h-10 w-10 mx-auto text-accent"/>
                 <CardTitle className="text-3xl md:text-4xl font-headline font-bold mt-4">Never Miss a Draw</CardTitle>
-                <CardDescription className="max-w-md mx-auto text-lg mt-2">
+                <CardDescription className="max-w-md mx-auto text-lg mt-2 font-body">
                     Subscribe to our newsletter to get notified about upcoming draws, winning numbers, and special promotions.
                 </CardDescription>
             </CardHeader>

@@ -29,7 +29,9 @@ export default function RootLayout({
         className={cn(
           'min-h-screen bg-background font-body antialiased flex flex-col',
         )}
+        suppressHydrationWarning={true}
       >
+        <div className="aurora-bg"></div>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
