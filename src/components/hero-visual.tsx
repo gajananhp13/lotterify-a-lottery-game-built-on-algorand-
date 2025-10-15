@@ -2,7 +2,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Bitcoin, BrainCircuit, Blocks, Sparkles, Cpu, Bot, Network, Code } from "lucide-react";
+import { Bitcoin, BrainCircuit, Blocks, Sparkles, Cpu, Bot, Network, Code, DollarSign, Euro, IndianRupee, Atom, Hexagon, Ticket, Gem } from "lucide-react";
 import { useEffect, useState } from "react";
 
 const icons = [
@@ -13,7 +13,14 @@ const icons = [
   Cpu,
   Bot,
   Network,
-  Code
+  Code,
+  DollarSign,
+  Euro,
+  IndianRupee,
+  Atom,
+  Hexagon,
+  Ticket,
+  Gem
 ];
 
 const colors = [
