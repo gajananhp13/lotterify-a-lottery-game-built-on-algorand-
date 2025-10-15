@@ -4,8 +4,9 @@ import { useState } from "react";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Coins, Scissors, Hand, Gem, Trophy, Users, Shield } from "lucide-react";
+import { Coins, Scissors, Hand, Gem, Trophy, Users, Shield, Swords } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
+import LotteryDuel from "@/components/games/lottery-duel";
 
 const AlgoIcon = () => (
     <svg width="1em" height="1em" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" className="inline-block h-5 w-5 ml-1">
@@ -56,6 +57,8 @@ export default function GamesPage() {
                     Challenge other players in games of chance and skill, or enter tournaments to win big.
                 </p>
             </header>
+
+            <LotteryDuel />
 
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
                 <Card className="glass-card flex flex-col transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 hover:border-primary/50 lg:col-span-2">
@@ -152,7 +155,7 @@ export default function GamesPage() {
             
             <Card className="glass-card mt-12">
                  <CardHeader>
-                    <CardTitle className="font-headline">Upcoming 1v1 Matches</CardTitle>
+                    <CardTitle className="font-headline flex items-center gap-3"><Swords />Upcoming 1v1 Matches</CardTitle>
                     <CardDescription>Join an existing match or wait for a challenger for your own.</CardDescription>
                 </CardHeader>
                 <CardContent>
@@ -175,7 +178,7 @@ export default function GamesPage() {
                         </div>
                     ) : (
                         <div className="flex items-center justify-center h-32 border-2 border-dashed rounded-lg">
-                            <p className="text-muted-foreground">No upcoming matches found.</p>
+                            <p className="text-muted-foreground">No upcoming matches found. Create one above!</p>
                         </div>
                     )}
                 </CardContent>
