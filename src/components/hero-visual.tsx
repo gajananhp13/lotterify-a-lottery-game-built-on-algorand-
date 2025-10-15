@@ -1,9 +1,9 @@
+
 "use client";
 
 import { motion } from "framer-motion";
 import { Bitcoin, BrainCircuit, Blocks, Sparkles, Cpu, Bot, Network, Code } from "lucide-react";
 import { useEffect, useState } from "react";
-import { cn } from "@/lib/utils";
 
 const icons = [
   Bitcoin,
@@ -16,25 +16,38 @@ const icons = [
   Code
 ];
 
-type IconPosition = {
+const colors = [
+    "hsl(var(--chart-1))",
+    "hsl(var(--chart-2))",
+    "hsl(var(--chart-3))",
+    "hsl(var(--chart-4))",
+    "hsl(var(--chart-5))",
+    "hsl(var(--primary))",
+    "hsl(var(--accent))",
+    "hsl(var(--secondary))",
+];
+
+type IconState = {
   x: number;
   y: number;
   duration: number;
   delay: number;
+  color: string;
 };
 
 const HeroVisual = () => {
-  const [positions, setPositions] = useState<IconPosition[]>([]);
+  const [iconStates, setIconStates] = useState<IconState[]>([]);
 
   useEffect(() => {
-    // Randomize positions on the client-side to avoid hydration errors
-    const newPositions = icons.map(() => ({
+    // Randomize states on the client-side to avoid hydration errors
+    const newStates = icons.map((_, i) => ({
       x: Math.random() * 80 + 10, // %
       y: Math.random() * 80 + 10, // %
-      duration: Math.random() * 5 + 5, // 5-10s
-      delay: Math.random() * 2, // 0-2s
+      duration: Math.random() * 5 + 7, // 7-12s
+      delay: Math.random() * 3, // 0-3s
+      color: colors[i % colors.length],
     }));
-    setPositions(newPositions);
+    setIconStates(newStates);
   }, []);
 
   return (
@@ -53,29 +66,33 @@ const HeroVisual = () => {
         <div className="absolute right-1/4 bottom-1/4 h-1/2 w-1/2 rounded-full bg-secondary/20 opacity-50 blur-3xl" />
       </div>
 
-
-      {positions.length > 0 && icons.map((Icon, i) => (
+      {iconStates.length > 0 && icons.map((Icon, i) => (
         <motion.div
           key={i}
           className="absolute z-10 flex h-12 w-12 items-center justify-center rounded-full border border-white/10 bg-white/5 backdrop-blur-md"
           style={{
-            left: `${positions[i].x}%`,
-            top: `${positions[i].y}%`,
+            left: `${iconStates[i].x}%`,
+            top: `${iconStates[i].y}%`,
           }}
           animate={{
             x: [0, Math.random() * 20 - 10, 0],
             y: [0, Math.random() * 20 - 10, 0],
             scale: [1, 1.1, 1],
+            filter: [
+              `drop-shadow(0 0 4px ${iconStates[i].color})`,
+              `drop-shadow(0 0 8px ${colors[(i + 1) % colors.length]})`,
+              `drop-shadow(0 0 4px ${iconStates[i].color})`,
+            ]
           }}
           transition={{
-            duration: positions[i].duration,
-            delay: positions[i].delay,
+            duration: iconStates[i].duration,
+            delay: iconStates[i].delay,
             repeat: Infinity,
             repeatType: "mirror",
             ease: "easeInOut",
           }}
         >
-          <Icon className="h-6 w-6 text-white/70" />
+          <Icon className="h-6 w-6" style={{ color: iconStates[i].color }} />
         </motion.div>
       ))}
     </motion.div>
