@@ -4,7 +4,7 @@ import { useState } from "react";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Coins, Scissors, Hand, Gem, Trophy, Users, Shield, Swords, Play } from "lucide-react";
+import { Coins, Scissors, Hand, Gem, Trophy, Users, Shield, Swords, Play, User } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import LotteryDuel from "@/components/games/lottery-duel";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
@@ -60,25 +60,59 @@ export default function GamesPage() {
             </header>
 
             <Dialog>
-                <Card className="glass-card relative overflow-hidden group">
-                    <CardHeader className="text-center">
-                        <div className="mx-auto bg-primary/10 text-primary border border-primary/20 rounded-full p-4 w-fit mb-4 transition-transform group-hover:scale-110">
-                            <Swords className="h-8 w-8" />
-                        </div>
-                        <CardTitle className="font-headline text-3xl">Lottery Duel (1v1)</CardTitle>
-                        <CardDescription>Stake your ALGO in a head-to-head, winner-takes-all match. Fair, random, and on-chain.</CardDescription>
-                    </CardHeader>
-                    <CardContent className="text-center">
-                        <DialogTrigger asChild>
-                            <Button size="lg">
-                                <Play className="mr-2" /> Play Now
-                            </Button>
-                        </DialogTrigger>
-                    </CardContent>
-                </Card>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <Card className="glass-card relative overflow-hidden group">
+                        <CardHeader className="text-center">
+                            <div className="mx-auto bg-primary/10 text-primary border border-primary/20 rounded-full p-4 w-fit mb-4 transition-transform group-hover:scale-110">
+                                <User className="h-8 w-8" />
+                            </div>
+                            <CardTitle className="font-headline text-2xl">Lottery Duel (1v1)</CardTitle>
+                            <CardDescription>A classic head-to-head winner-takes-all match.</CardDescription>
+                        </CardHeader>
+                        <CardContent className="text-center">
+                            <DialogTrigger asChild>
+                                <Button size="lg">
+                                    <Play className="mr-2" /> Play Now
+                                </Button>
+                            </DialogTrigger>
+                        </CardContent>
+                    </Card>
+                     <Card className="glass-card relative overflow-hidden group">
+                        <CardHeader className="text-center">
+                            <div className="mx-auto bg-primary/10 text-primary border border-primary/20 rounded-full p-4 w-fit mb-4 transition-transform group-hover:scale-110">
+                                <Users className="h-8 w-8" />
+                            </div>
+                            <CardTitle className="font-headline text-2xl">Team Duel (2v2)</CardTitle>
+                            <CardDescription>Partner up and face off against another duo.</CardDescription>
+                        </CardHeader>
+                        <CardContent className="text-center">
+                            <DialogTrigger asChild>
+                                <Button size="lg" variant="outline">
+                                    <Play className="mr-2" /> Play Now
+                                </Button>
+                            </DialogTrigger>
+                        </CardContent>
+                    </Card>
+                     <Card className="glass-card relative overflow-hidden group">
+                        <CardHeader className="text-center">
+                            <div className="mx-auto bg-primary/10 text-primary border border-primary/20 rounded-full p-4 w-fit mb-4 transition-transform group-hover:scale-110">
+                                <Shield className="h-8 w-8" />
+                            </div>
+                            <CardTitle className="font-headline text-2xl">Squad Duel (4v4)</CardTitle>
+                            <CardDescription>Assemble your squad for a high-stakes battle.</CardDescription>
+                        </CardHeader>
+                        <CardContent className="text-center">
+                             <DialogTrigger asChild>
+                                <Button size="lg" variant="outline">
+                                    <Play className="mr-2" /> Play Now
+                                </Button>
+                            </DialogTrigger>
+                        </CardContent>
+                    </Card>
+                </div>
                 <DialogContent className="max-w-4xl p-0 border-0 bg-transparent">
                      <DialogHeader className="p-6 pb-0">
-                        <DialogTitle className="font-headline text-3xl text-center">Lottery Duel (1v1)</DialogTitle>
+                        <DialogTitle className="font-headline text-3xl text-center">Lottery Duel</DialogTitle>
                         <DialogDescription className="text-center text-muted-foreground">
                             Two players enter, one player leaves with the prize. Good luck.
                         </DialogDescription>
