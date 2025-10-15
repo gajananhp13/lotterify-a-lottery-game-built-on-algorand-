@@ -3,12 +3,12 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import CountdownTimer from "@/components/countdown-timer";
 import { Ticket, Gem, Combine, Layers, ShoppingCart, Star, BookOpen, ArrowRight, Bell } from "lucide-react";
-import AnimatedTicketCascade from "@/components/animated-ticket-cascade";
 import TrendingTickets from "@/components/trending-tickets";
 import { Input } from "@/components/ui/input";
 import Link from "next/link";
 import AnimatedText from "@/components/animated-text";
 import { cn } from "@/lib/utils";
+import HeroVisual from "@/components/hero-visual";
 
 export default function Home() {
   const drawDate = new Date();
@@ -17,9 +17,8 @@ export default function Home() {
 
   return (
     <div className="space-y-24">
-      <section className="relative grid md:grid-cols-2 items-center gap-8 md:gap-16 py-12 px-4 rounded-xl overflow-hidden glass-card">
-         <AnimatedTicketCascade />
-         <div className="relative z-10 text-center md:text-left col-span-2 md:col-span-1">
+       <section className="grid md:grid-cols-2 items-center gap-12 md:gap-4 py-8">
+         <div className="relative z-10 text-center md:text-left">
             <h1 className="text-5xl md:text-7xl font-headline font-bold text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent mb-4">
               The Fair Algorand Lottery
             </h1>
@@ -28,6 +27,9 @@ export default function Home() {
               <Ticket className="mr-2 h-6 w-6" />
               Buy a Ticket Now
             </Button>
+         </div>
+         <div className="relative flex items-center justify-center">
+            <HeroVisual />
          </div>
       </section>
 
@@ -64,8 +66,8 @@ export default function Home() {
               Lotterify is more than just a lottery. It's a demonstration of the power and flexibility of the Algorand blockchain.
             </p>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <Card className="flex flex-col glass-card transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 hover:border-primary/50">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <Card className="flex flex-col glass-card transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 hover:border-primary/50 border-white/5 bg-white/5">
             <CardHeader className="flex flex-row items-center gap-4">
               <div className="p-3 rounded-full bg-primary/10 text-primary border border-primary/20">
                 <Gem className="h-6 w-6" />
@@ -79,7 +81,7 @@ export default function Home() {
                 <Button variant="link" className="p-0 text-primary/80 hover:text-primary">Learn More <ArrowRight className="ml-2 h-4 w-4"/></Button>
             </CardFooter>
           </Card>
-           <Card className="flex flex-col glass-card transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 hover:border-primary/50">
+           <Card className="flex flex-col glass-card transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 hover:border-primary/50 border-white/5 bg-white/5">
             <CardHeader className="flex flex-row items-center gap-4">
               <div className="p-3 rounded-full bg-primary/10 text-primary border border-primary/20">
                 <Combine className="h-6 w-6" />
@@ -93,7 +95,7 @@ export default function Home() {
                 <Button variant="link" className="p-0 text-primary/80 hover:text-primary">Learn More <ArrowRight className="ml-2 h-4 w-4"/></Button>
             </CardFooter>
           </Card>
-           <Card className="flex flex-col glass-card transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 hover:border-primary/50">
+           <Card className="flex flex-col glass-card transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 hover:border-primary/50 border-white/5 bg-white/5">
             <CardHeader className="flex flex-row items-center gap-4">
               <div className="p-3 rounded-full bg-primary/10 text-primary border border-primary/20">
                 <Layers className="h-6 w-6" />
@@ -107,7 +109,7 @@ export default function Home() {
                 <Button variant="link" className="p-0 text-primary/80 hover:text-primary">Learn More <ArrowRight className="ml-2 h-4 w-4"/></Button>
             </CardFooter>
           </Card>
-          <Card className="flex flex-col glass-card transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 hover:border-primary/50">
+          <Card className="flex flex-col glass-card transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 hover:border-primary/50 border-white/5 bg-white/5">
             <CardHeader className="flex flex-row items-center gap-4">
               <div className="p-3 rounded-full bg-primary/10 text-primary border border-primary/20">
                 <ShoppingCart className="h-6 w-6" />
@@ -121,7 +123,7 @@ export default function Home() {
                 <Button variant="link" className="p-0 text-primary/80 hover:text-primary">Learn More <ArrowRight className="ml-2 h-4 w-4"/></Button>
             </CardFooter>
           </Card>
-          <Card className="flex flex-col glass-card transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 hover:border-primary/50">
+          <Card className="flex flex-col glass-card transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 hover:border-primary/50 border-white/5 bg-white/5">
             <CardHeader className="flex flex-row items-center gap-4">
               <div className="p-3 rounded-full bg-primary/10 text-primary border border-primary/20">
                 <Star className="h-6 w-6" />
@@ -135,7 +137,7 @@ export default function Home() {
                 <Button variant="link" className="p-0 text-primary/80 hover:text-primary">Learn More <ArrowRight className="ml-2 h-4 w-4"/></Button>
             </CardFooter>
           </Card>
-          <Card className="flex flex-col glass-card transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 hover:border-primary/50">
+          <Card className="flex flex-col glass-card transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 hover:border-primary/50 border-white/5 bg-white/5">
             <CardHeader className="flex flex-row items-center gap-4">
               <div className="p-3 rounded-full bg-primary/10 text-primary border border-primary/20">
                 <BookOpen className="h-6 w-6" />
