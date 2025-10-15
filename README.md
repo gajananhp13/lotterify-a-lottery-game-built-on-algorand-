@@ -1,59 +1,72 @@
-# Lotterify – Decentralized Lottery Game on Algorand
+# Lotterify – Decentralized Lottery & Gaming on Algorand
 
-> A fully on-chain decentralized lottery where every ticket is a tradable NFT. Built on Algorand for speed, security, and transparency.
+> A fully on-chain, decentralized lottery and gaming platform where every ticket is a tradable NFT. Built on Algorand for speed, security, and unparalleled transparency.
 
 ---
 
-## ✨ Features
+## ✨ Core Features
 
--   **Buy NFT-based tickets**: Purchase tickets using ALGO, with each ticket minted as a unique ARC-19 NFT.
--   **Ticket Trading**: Tickets can be bought and sold on a secondary marketplace before the draw.
--   **Fair Winner Selection**: Utilizes an on-chain random winner selection mechanism for transparent and fair draws.
--   **Automatic Payout**: The prize pool is automatically and instantly distributed to the winner's wallet.
--   **Modern dApp Experience**: A clean, responsive, and interactive frontend built with Next.js and Tailwind CSS.
+-   **Decentralized NFT Lottery**: Purchase lottery tickets as unique Algorand Standard Assets (ASAs). Every ticket is an NFT you truly own.
+-   **Secondary Marketplace**: Trade your NFT tickets on an open marketplace before the official draw. Speculate on lucky numbers or sell your tickets for a profit.
+-   **Community Games Hub**: Challenge other players in a variety of on-chain games of chance and skill.
+    -   **Lottery Duel (1v1, 2v2, 4v4)**: Go head-to-head with others in a winner-takes-all match.
+    -   **Tournament Pool**: Join bracket-style tournaments, advancing through rounds to become the champion.
+    -   **Quick Games**: Engage in simple, fast-paced betting games like Coin Flip and Rock, Paper, Scissors.
+-   **Provably Fair Draws**: Winner selection for both the main lottery and duels utilizes on-chain randomness, ensuring every outcome is transparent and tamper-proof.
+-   **Instant & Automatic Payouts**: The smart contract handles the entire prize pool, automatically distributing winnings to the victor's wallet instantly after a draw.
+-   **Personalized Dashboard**: Connect your wallet to access a dashboard showing your ALGO balance, ticket collection, and game history.
 
 ---
 
 ## 🚀 How It Works
 
-1.  **Connect Wallet**: User connects their Pera Wallet to the dApp.
-2.  **Buy Ticket**: User purchases an NFT ticket, and the funds are added to the prize pool escrow.
-3.  **Trade Tickets**: Before the draw, users can list their tickets for sale on the marketplace.
-4.  **Draw**: The smart contract executes the draw on-chain using a randomness source.
-5.  **Winner Payout**: The entire prize pool is automatically transferred to the winner's account.
+1.  **Connect Wallet**: Users connect their Pera Wallet to the dApp, establishing a secure link to the Algorand blockchain.
+2.  **Buy a Ticket**: Users purchase an NFT ticket for the main lottery. The funds are automatically sent to the prize pool escrow contract.
+3.  **Trade on the Marketplace**: Before the draw, ticket holders can list their NFTs on the marketplace for others to buy.
+4.  **Play Community Games**: Users can join a duel or tournament by staking ALGO or a lottery ticket, competing directly against others.
+5.  **The Draw**: The smart contract executes the draw for the main lottery or a game, using an on-chain randomness source to select a winner.
+6.  **Winner Payout**: The prize pool is instantly and automatically transferred to the winner’s account without any manual intervention.
 
 ---
 
 ## 🛠️ Tech Stack
 
--   **Smart Contracts**: PyTeal
--   **Frontend**: Next.js (React) + TailwindCSS + Pera Wallet
+-   **Smart Contracts**: PyTeal (for secure, Python-based smart contract development)
+-   **Frontend**: Next.js (React), Tailwind CSS, ShadCN UI, Framer Motion
+-   **Wallet Integration**: Pera Wallet Connect SDK
 -   **Backend**: Flask + Algorand SDK
--   **Network**: Algorand TestNet
+-   **Network**: Algorand (TestNet & MainNet)
 
 ---
 
 ## 💡 Key Concepts & Technical Highlights
 
-### Novel use of ASA / NFT + Utility
-Lotterify turns each lottery ticket into an ASA-based NFT, enabling secondary trading before the draw. This showcases the power of Algorand Standard Assets (ASA) not just for art or collectibles, but with embedded utility.
+### 1. NFTs with Embedded Utility
+Lotterify transforms lottery tickets from simple numbers into valuable digital assets. By minting each ticket as an ASA-based NFT, we unlock a secondary economy where tickets can be traded, creating a more dynamic and engaging user experience.
 
-### Composable Smart Contract Architecture
-The application decomposes functionality across modular contracts: ticket minting, round management, marketplace, and referral logic. This architecture follows best practices (separation of concerns) and serves as a strong template for future dApps.
+### 2. Composable & Modular Smart Contracts
+The application's logic is broken down into a suite of modular contracts:
+- **Ticket Minting**: Manages the creation of NFT tickets.
+- **Round Management**: Controls the lifecycle of each lottery round.
+- **Marketplace**: Handles the secure, on-chain trading of tickets via escrow.
+- **Game Logic**: Contains the code for duels and tournaments.
 
-### Full End-to-End Integration
-Many projects show either a frontend or a contract, but Lotterify includes the full stack: PyTeal contracts, a Python SDK backend, and a React + wallet UI. It’s a complete “example app” for others to clone, adapt, or learn from.
+This architecture promotes separation of concerns, making the system secure, maintainable, and easy to extend.
 
-### Demonstration of Advanced Features
-The project implements non-trivial contract patterns, including:
--   Integration of on-chain randomness (oracle / VRF)
--   On-chain trading (escrow flows)
--   Referral reward flows
--   Secure handling of prize pools, fees, and claims
--   Security patterns (opt-in, re-entrancy safety, atomic transfers)
+### 3. Full End-to-End dApp Implementation
+Lotterify serves as a complete reference application, providing a full-stack solution that includes:
+- **On-Chain Logic**: PyTeal smart contracts for all core functionality.
+- **Backend Services**: A Python backend to interface with the blockchain.
+- **Modern Frontend**: A responsive and interactive UI built with Next.js, including seamless wallet integration.
 
-### Community & Educational Value
-A well-documented Lotterify repository can serve as a tutorial and a "reference app" for others building dApps on Algorand.
+### 4. Advanced On-Chain Patterns
+The project demonstrates several sophisticated smart contract patterns crucial for building robust dApps:
+- **On-Chain Randomness**: Integration with a Verifiable Random Function (VRF) for fair winner selection.
+- **Secure Escrow**: On-chain trading is handled safely through atomic transfers and escrow logic.
+- **State Management**: Secure handling of prize pools, fees, and claims within the contract's state.
+
+### 5. Community & Educational Value
+With its clean architecture and comprehensive documentation, the Lotterify repository is an ideal resource for developers looking to build high-quality dApps on Algorand. It serves as both a practical tutorial and a "gold-standard" reference app.
 
 ---
 
