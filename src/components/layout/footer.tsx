@@ -9,10 +9,11 @@ const FooterLink = ({ href, children }: { href: string; children: React.ReactNod
 
 export default function Footer() {
   return (
-    <footer className="border-t bg-background">
+    <footer className="border-t border-white/10 bg-background/50 backdrop-blur-lg">
       <div className="container mx-auto px-4 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-8">
-          <div className="md:col-span-4">
+        <div className="grid grid-cols-2 md:grid-cols-5 gap-8">
+          
+          <div className="col-span-2 md:col-span-1">
             <div className="flex items-center gap-2 mb-4">
               <Ticket className="h-7 w-7 text-primary" />
               <span className="text-xl font-headline font-bold">Lotterify</span>
@@ -22,28 +23,27 @@ export default function Footer() {
             </p>
           </div>
 
-          <div className="md:col-span-2">
-            <h3 className="font-headline font-semibold mb-4 tracking-wide">Quick Links</h3>
+          <div className="col-span-1">
+            <h3 className="font-headline font-semibold mb-4 tracking-wide text-foreground">App</h3>
             <ul className="space-y-3">
               <li><FooterLink href="/dashboard">Dashboard</FooterLink></li>
               <li><FooterLink href="/my-tickets">My Tickets</FooterLink></li>
               <li><FooterLink href="/marketplace">Marketplace</FooterLink></li>
-              <li><FooterLink href="/results">Past Results</FooterLink></li>
+               <li><FooterLink href="/games">Games</FooterLink></li>
             </ul>
           </div>
 
-          <div className="md:col-span-2">
-            <h3 className="font-headline font-semibold mb-4 tracking-wide">Resources</h3>
+          <div className="col-span-1">
+            <h3 className="font-headline font-semibold mb-4 tracking-wide text-foreground">Info</h3>
             <ul className="space-y-3">
+              <li><FooterLink href="/results">Past Results</FooterLink></li>
               <li><FooterLink href="#">How It Works</FooterLink></li>
-              <li><FooterLink href="#">About Algorand</FooterLink></li>
               <li><FooterLink href="#">Security</FooterLink></li>
-              <li><FooterLink href="#">FAQs</FooterLink></li>
             </ul>
           </div>
           
-          <div className="md:col-span-2">
-            <h3 className="font-headline font-semibold mb-4 tracking-wide">Community</h3>
+          <div className="col-span-1">
+            <h3 className="font-headline font-semibold mb-4 tracking-wide text-foreground">Community</h3>
              <ul className="space-y-3">
               <li><FooterLink href="#">Github</FooterLink></li>
               <li><FooterLink href="#">Discord</FooterLink></li>
@@ -51,8 +51,8 @@ export default function Footer() {
             </ul>
           </div>
 
-          <div className="md:col-span-2">
-            <h3 className="font-headline font-semibold mb-4 tracking-wide">Legal</h3>
+          <div className="col-span-1">
+            <h3 className="font-headline font-semibold mb-4 tracking-wide text-foreground">Legal</h3>
             <ul className="space-y-3">
               <li><FooterLink href="#">Terms of Service</FooterLink></li>
               <li><FooterLink href="#">Privacy Policy</FooterLink></li>
@@ -60,7 +60,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-12 pt-8 border-t flex flex-col sm:flex-row items-center justify-between">
+        <div className="mt-12 pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between">
           <p className="text-sm text-muted-foreground text-center sm:text-left">
             © {new Date().getFullYear()} Lotterify. A Decentralized Application on Algorand.
           </p>
