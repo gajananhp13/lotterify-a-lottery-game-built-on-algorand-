@@ -29,13 +29,13 @@ export default function RootLayout({
         className={cn(
           'min-h-screen bg-background font-body antialiased flex flex-col',
         )}
-        suppressHydrationWarning={true}
       >
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
           enableSystem
           disableTransitionOnChange
+          suppressHydrationWarning={true}
         >
           <WalletProvider>
             <Header />
