@@ -1,4 +1,6 @@
+'use client';
 
+import { useState } from "react";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -11,14 +13,39 @@ const AlgoIcon = () => (
     </svg>
 )
 
-const mockPlayers = [
+const initialPlayers = [
     { address: 'PLAYER...A1B2', status: 'Waiting' },
     { address: 'PLAYER...C3D4', status: 'Waiting' },
-    { address: 'PLAYER...E5F6', status: 'Waiting' },
-    { address: 'PLAYER...G7H8', status: 'Waiting' },
 ];
 
+type Match = {
+    id: number;
+    gameType: 'Coin Flip' | 'Rock, Paper, Scissors';
+    betAmount: number;
+    creatorAddress: string;
+};
+
 export default function GamesPage() {
+    const [tournamentPlayers, setTournamentPlayers] = useState(initialPlayers);
+    const [upcomingMatches, setUpcomingMatches] = useState<Match[]>([]);
+    
+    const handleJoinTournament = () => {
+        if (tournamentPlayers.length < 8) {
+            const newPlayer = { address: `PLAYER...${Math.random().toString(16).substr(2, 4).toUpperCase()}`, status: 'Ready' as const };
+            setTournamentPlayers([...tournamentPlayers, newPlayer]);
+        }
+    };
+
+    const handleCreateMatch = (gameType: 'Coin Flip' | 'Rock, Paper, Scissors') => {
+        const newMatch: Match = {
+            id: upcomingMatches.length + 1,
+            gameType,
+            betAmount: 10, // Mock bet amount
+            creatorAddress: 'YOU...DEMO',
+        };
+        setUpcomingMatches([newMatch, ...upcomingMatches]);
+    };
+
     return (
         <div className="space-y-12">
             <header className="text-center">
@@ -55,16 +82,16 @@ export default function GamesPage() {
                             </div>
                         </div>
                          <div className="space-y-4">
-                            <h3 className="font-headline text-lg flex items-center gap-2"><Users className="h-5 w-5"/> Tournament Lobby (4/8)</h3>
+                            <h3 className="font-headline text-lg flex items-center gap-2"><Users className="h-5 w-5"/> Tournament Lobby ({tournamentPlayers.length}/8)</h3>
                             <div className="space-y-2">
-                                {mockPlayers.map((player, index) => (
+                                {tournamentPlayers.map((player, index) => (
                                      <div key={index} className="flex items-center justify-between p-2 rounded-md bg-white/5 text-sm">
                                         <p className="font-mono text-xs">{player.address}</p>
                                         <Badge variant={player.status === 'Ready' ? "default" : "outline"}>{player.status}</Badge>
                                     </div>
                                 ))}
                             </div>
-                            <Button className="w-full" size="lg">
+                            <Button className="w-full" size="lg" onClick={handleJoinTournament} disabled={tournamentPlayers.length >= 8}>
                                 <Shield className="mr-2" /> Join Tournament (1 Ticket)
                             </Button>
                         </div>
@@ -89,7 +116,7 @@ export default function GamesPage() {
                             </div>
                         </CardContent>
                         <CardFooter>
-                            <Button className="w-full" size="lg">
+                            <Button className="w-full" size="lg" onClick={() => handleCreateMatch('Coin Flip')}>
                                 <Gem className="mr-2" /> Create Match
                             </Button>
                         </CardFooter>
@@ -115,7 +142,7 @@ export default function GamesPage() {
                             </div>
                         </CardContent>
                         <CardFooter>
-                            <Button className="w-full bg-accent text-accent-foreground hover:bg-accent/90" size="lg">
+                            <Button className="w-full bg-accent text-accent-foreground hover:bg-accent/90" size="lg" onClick={() => handleCreateMatch('Rock, Paper, Scissors')}>
                                 <Gem className="mr-2" /> Create Match
                             </Button>
                         </CardFooter>
@@ -129,9 +156,28 @@ export default function GamesPage() {
                     <CardDescription>Join an existing match or wait for a challenger for your own.</CardDescription>
                 </CardHeader>
                 <CardContent>
-                    <div className="flex items-center justify-center h-32 border-2 border-dashed rounded-lg">
-                        <p className="text-muted-foreground">No upcoming matches found.</p>
-                    </div>
+                    {upcomingMatches.length > 0 ? (
+                        <div className="space-y-4">
+                            {upcomingMatches.map((match) => (
+                                <div key={match.id} className="flex items-center justify-between p-3 rounded-lg bg-white/5">
+                                    <div className="flex items-center gap-4">
+                                        <div className="p-2 rounded-full bg-primary/10 text-primary">
+                                            {match.gameType === 'Coin Flip' ? <Coins className="h-5 w-5" /> : <Scissors className="h-5 w-5" />}
+                                        </div>
+                                        <div>
+                                            <p className="font-semibold">{match.gameType}</p>
+                                            <p className="text-sm text-muted-foreground font-mono">{match.creatorAddress} betting {match.betAmount} ALGO</p>
+                                        </div>
+                                    </div>
+                                    <Button>Join Match</Button>
+                                </div>
+                            ))}
+                        </div>
+                    ) : (
+                        <div className="flex items-center justify-center h-32 border-2 border-dashed rounded-lg">
+                            <p className="text-muted-foreground">No upcoming matches found.</p>
+                        </div>
+                    )}
                 </CardContent>
             </Card>
 
